@@ -95,7 +95,7 @@ SCENE_DOC = """Scene types (each scene = one beat, 3-6 seconds of narration):
 def write_script(plan):
     results = json.dumps(plan["calc_results"], indent=1)
     facts = json.dumps(plan.get("facts", []), indent=1)
-    msg = f"""Write a YouTube Short (35-50 seconds spoken, ~110-130 words total) for "{CHANNEL}".
+    msg = f"""Write a YouTube Short (35-45 seconds spoken, 90-105 words of narration in total, count them) for "{CHANNEL}".
 Topic: {plan['topic']}
 Angle: {plan.get('angle','')}
 
@@ -157,6 +157,19 @@ def best_hook_and_title(script):
     script["title"] = ranked[0]["title"][:100] if ranked else script.get("titles", ["Money fact"])[0]
     script["hook_score"] = scored[0][0] if scored else None
     script["title_score"] = ranked[0]["score"] if ranked else None
+    return script
+
+
+def shorten(script, max_words):
+    """Trim narration while keeping every number and the scene structure."""
+    msg = f"""Shorten the narration of this YouTube Short to at most {max_words} words in total.
+Keep the same scenes, order, types, visuals and every number exactly as they are.
+Only rewrite each scene's "voice" (and set "caption" to match). Keep the first line a strong hook.
+Scenes: {json.dumps(script['scenes'], indent=1)}
+Return JSON: {{"scenes": [...same scenes with shorter voice/caption...]}}"""
+    out = chat([{"role": "user", "content": msg}], temperature=0.3, max_tokens=4000)
+    if out.get("scenes") and len(out["scenes"]) == len(script["scenes"]):
+        script["scenes"] = out["scenes"]
     return script
 
 

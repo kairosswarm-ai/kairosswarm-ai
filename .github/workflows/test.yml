@@ -49,7 +49,7 @@ jobs:
           KOKORO_DIR: models
         run: |
           MODE="${{ github.event.inputs.mode }}"
-          [ -z "$MODE" ] && MODE="$(cat .github/run-test 2>/dev/null | tr -d '[:space:]')"
+          [ -z "$MODE" ] && MODE="$(head -n1 .github/run-test 2>/dev/null | tr -d '[:space:]')"
           [ -z "$MODE" ] && MODE=check
           case "$MODE" in
             check)  python -m src.main check ;;

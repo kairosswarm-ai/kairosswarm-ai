@@ -61,7 +61,13 @@ def make_short(do_upload=False):
     work = tempfile.mkdtemp()
     try:
         segs, wav, total = voice.synth_scenes(script["scenes"], work)
-        if total > 58:
+        for _ in range(2):
+            if total <= 52:
+                break
+            words = sum(len(str(s.get("voice", "")).split()) for s in script["scenes"])
+            script = script_gen.shorten(script, int(words * 48 / total))
+            segs, wav, total = voice.synth_scenes(script["scenes"], work)
+        if total > 70:
             raise RuntimeError(f"narration too long for a Short ({total:.1f}s)")
         stamp = datetime.datetime.utcnow().strftime("%Y%m%d-%H%M")
         mp4 = os.path.join(OUT, f"short-{stamp}.mp4")
