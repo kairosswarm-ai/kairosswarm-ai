@@ -291,9 +291,11 @@ def generate(history, seed=None, max_topics=4, max_revisions=2, trends=None, tre
     last_err = None
     for _ in range(max_topics):
         plan = plan_topic(history, rng, trends, list(avoid), lessons)
-        if any("error" in c["result"] for c in plan["calc_results"]):
+        good = [c for c in plan["calc_results"] if "error" not in c["result"]]
+        if plan["calc_results"] and not good:
             last_err = f"calculator error: {plan['calc_results']}"
             continue
+        plan["calc_results"] = good
         script = write_script(plan, trend_tags, fmt,
                               recent_styles=[h.get("style", "") for h in history[-6:] if h.get("style")],
                               recent_hooks=[h.get("hook", "")[:40] for h in history[-15:] if h.get("hook")])

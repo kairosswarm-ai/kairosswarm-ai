@@ -1,6 +1,6 @@
 """Deterministic finance calculators. Every number shown in a video that comes
 from math must come from here, never from the language model."""
-import math
+import math, re
 
 
 def debt_payoff(balance: float, apr_pct: float, monthly_payment: float, max_months: int = 1200):
@@ -86,14 +86,25 @@ CALC_DOCS = """Available calculators (call them by name with JSON args):
 - arithmetic(expression) -> result   (plain + - * / only)"""
 
 
+def _resolve(expr, done):
+    """Allow 'c4.future_value - c3.future_value' style references to earlier results."""
+    def rep(m):
+        r = done.get(m.group(1), {}).get(m.group(2))
+        return str(r) if isinstance(r, (int, float)) else m.group(0)
+    return re.sub(r"\b(c\d+)\.([a-z_]+)\b", rep, str(expr))
+
+
 def run_calcs(requests_list):
-    out = []
+    out, done = [], {}
     for req in requests_list or []:
-        name, args = req.get("name"), req.get("args", {})
+        name, args = req.get("name"), dict(req.get("args", {}))
+        if name == "arithmetic" and "expression" in args:
+            args["expression"] = _resolve(args["expression"], done)
         fn = CALCS.get(name)
         try:
             res = fn(**args) if fn else {"error": f"unknown calculator {name}"}
         except Exception as e:  # bad args from the model
             res = {"error": str(e)}
         out.append({"id": req.get("id"), "name": name, "args": args, "result": res})
+        if req.get("id"): done[req["id"]] = res
     return out
