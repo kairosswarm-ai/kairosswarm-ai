@@ -28,12 +28,16 @@ def my_channel(tok):
             "subscribers": it.get("statistics", {}).get("subscriberCount")}
 
 
-def upload(tok, path, title, description, tags, privacy="public", category="27"):
+def upload(tok, path, title, description, tags, privacy="public", category="27", publish_at=None):
+    """publish_at: RFC3339 UTC string. YouTube keeps the video private and makes it
+    public by itself at that time (needs privacy=private)."""
     meta = {"snippet": {"title": title[:100], "description": description[:4900],
                         "tags": [t[:30] for t in (tags or [])][:15], "categoryId": category,
                         "defaultLanguage": "en", "defaultAudioLanguage": "en"},
-            "status": {"privacyStatus": privacy, "selfDeclaredMadeForKids": False,
+            "status": {"privacyStatus": "private" if publish_at else privacy, "selfDeclaredMadeForKids": False,
                        "embeddable": True, "license": "youtube"}}
+    if publish_at:
+        meta["status"]["publishAt"] = publish_at
     size = os.path.getsize(path)
     init = requests.post(f"{UPLOAD}?uploadType=resumable&part=snippet,status", timeout=60,
                          headers={"Authorization": f"Bearer {tok}", "Content-Type": "application/json; charset=UTF-8",
@@ -49,6 +53,7 @@ def upload(tok, path, title, description, tags, privacy="public", category="27")
         if r.status_code in (200, 201):
             v = r.json()
             return {"id": v["id"], "privacy": v["status"]["privacyStatus"],
+                    "publish_at": v["status"].get("publishAt"),
                     "url": f"https://youtube.com/shorts/{v['id']}"}
         if r.status_code in (500, 502, 503, 504):
             time.sleep(10 * (attempt + 1)); continue

@@ -1,9 +1,9 @@
 name: daily-shorts
 on:
   schedule:
-    # ~9:47am and ~5:41pm US Eastern (UTC times)
-    - cron: "47 14 * * *"
-    - cron: "41 22 * * *"
+    # Runs once a day at 06:13 UTC (1:13am ET / 11:43am India). It makes 3 Shorts and
+    # schedules each one on YouTube for 9:00am, 2:00pm and 6:00pm US Eastern.
+    - cron: "13 6 * * *"
   workflow_dispatch:
 
 permissions:
@@ -16,7 +16,7 @@ concurrency:
 jobs:
   short:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 80
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -36,14 +36,14 @@ jobs:
           [ -f models/kokoro-v1.0.onnx ] || curl -sL -o models/kokoro-v1.0.onnx https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.onnx
           [ -f models/voices-v1.0.bin ] || curl -sL -o models/voices-v1.0.bin https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin
       - run: pip install -r requirements.txt
-      - name: Make and upload one Short
+      - name: Make 3 Shorts and schedule them
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
           KOKORO_DIR: models
-        run: python -m src.main short --upload
+        run: python -m src.main batch
       - name: Save video
         if: always()
         uses: actions/upload-artifact@v4
@@ -58,4 +58,4 @@ jobs:
           git config user.name "pipeline-bot"
           git config user.email "pipeline-bot@users.noreply.github.com"
           git add reports/ data/history.json || true
-          git diff --cached --quiet || (git commit -m "history: daily short" && git pull --rebase -q && git push -q)
+          git diff --cached --quiet || (git commit -m "history: daily shorts" && git pull --rebase -q && git push -q)

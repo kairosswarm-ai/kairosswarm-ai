@@ -53,7 +53,27 @@ def check():
     return ok, lines
 
 
-def make_short(do_upload=False):
+# Publish slots in US Eastern time (YouTube makes each Short public at exactly this time)
+SLOTS_ET = [s.strip() for s in os.environ.get("SLOTS_ET", "09:00,14:00,18:00").split(",") if s.strip()]
+
+
+def slot_times(now_utc=None):
+    from zoneinfo import ZoneInfo
+    et = ZoneInfo("America/New_York")
+    now = now_utc or datetime.datetime.now(datetime.timezone.utc)
+    day = now.astimezone(et).date()
+    out = []
+    for sl in SLOTS_ET:
+        hh, mm = map(int, sl.split(":"))
+        t = datetime.datetime(day.year, day.month, day.day, hh, mm, tzinfo=et).astimezone(datetime.timezone.utc)
+        earliest = now + datetime.timedelta(minutes=30)
+        if t < earliest:  # run was late: publish soon instead of in the past
+            t = earliest + datetime.timedelta(minutes=10 * len(out))
+        out.append(t.strftime("%Y-%m-%dT%H:%M:%SZ"))
+    return out
+
+
+def make_short(do_upload=False, publish_at=None):
     os.makedirs(OUT, exist_ok=True)
     hist = load_hist()
     t0 = time.time()
@@ -85,11 +105,10 @@ def make_short(do_upload=False):
         tok = youtube.access_token()
         desc = script.get("description", "")
         res = youtube.upload(tok, mp4, script["title"], desc, script.get("tags", []),
-                             privacy=os.environ.get("PRIVACY", "public"))
+                             privacy=os.environ.get("PRIVACY", "public"), publish_at=publish_at)
         entry.update(res)
-        lines.append(f"- uploaded: {res['url']} (privacy: {res['privacy']})")
-        if res["privacy"] != os.environ.get("PRIVACY", "public"):
-            lines.append("- note: YouTube kept it private (API project not audited yet)")
+        when = f", goes live {res.get('publish_at')} UTC" if publish_at else ""
+        lines.append(f"- uploaded: {res['url']} (privacy now: {res['privacy']}{when})")
     else:
         lines.append(f"- not uploaded (dry run): {os.path.basename(mp4)}")
     hist.append(entry); save_hist(hist)
@@ -98,6 +117,20 @@ def make_short(do_upload=False):
 
 def main():
     cmd = sys.argv[1] if len(sys.argv) > 1 else "check"
+    if cmd == "batch":  # make len(SLOTS_ET) Shorts, each scheduled for its slot
+        ok, lines = check()
+        if not ok:
+            report(["## Setup check"] + lines); sys.exit(1)
+        lines = ["## Setup check"] + lines
+        done = 0
+        for i, t in enumerate(slot_times()):
+            lines += ["", f"## Short {i + 1} (slot {SLOTS_ET[i]} ET = {t})"]
+            try:
+                lines += make_short(True, publish_at=t); done += 1
+            except Exception as e:
+                lines += [f"- FAILED: {e}", "```", traceback.format_exc()[-1500:], "```"]
+        report(lines)
+        sys.exit(0 if done else 1)
     try:
         if cmd == "check":
             ok, lines = check(); report(["## Setup check"] + lines); sys.exit(0 if ok else 1)
