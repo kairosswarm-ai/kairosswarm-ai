@@ -21,6 +21,15 @@ def token_scopes(tok):
     return r.json().get("scope", "").split() if r.status_code == 200 else []
 
 
+def can_reply_comments(tok):
+    """Harmless probe: reply to a comment id that does not exist. 403 = missing permission,
+    404/400 = permission is fine (the fake comment just isn't there). Posts nothing."""
+    r = requests.post("https://www.googleapis.com/youtube/v3/comments", params={"part": "snippet"}, timeout=30,
+                      headers={"Authorization": f"Bearer {tok}", "Content-Type": "application/json"},
+                      data=json.dumps({"snippet": {"parentId": "Ugzzzzzzzzzzzzzzzzzzzz4AaABAg", "textOriginal": "probe"}}))
+    return r.status_code != 403, f"{r.status_code} {r.text[:160]}"
+
+
 def my_channel(tok):
     r = requests.get(f"{API}/channels", timeout=30, params={"part": "snippet,statistics", "mine": "true"},
                      headers={"Authorization": f"Bearer {tok}"})
