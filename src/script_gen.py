@@ -59,7 +59,7 @@ def pick_pillar(rng):
     return PILLARS[0][0], PILLARS[0][2]
 
 
-def plan_topic(history, rng):
+def plan_topic(history, rng, trends=None, avoid=()):
     pillar, desc = pick_pillar(rng)
     recent = "\n".join(f"- {h['topic']}" for h in history[-60:]) or "(none yet)"
     msg = f"""You plan YouTube Shorts for "{CHANNEL}", a faceless US-audience channel of animated
@@ -67,6 +67,14 @@ money facts (shocking but TRUE numbers, clean charts). Pillar for this video: {d
 
 Already covered (do NOT repeat or closely paraphrase):
 {recent}
+{chr(10).join("- " + a for a in avoid)}
+
+MARKET RESEARCH - US money/business Shorts that beat their own channel the most this week
+(multiple = views / channel subscribers; formula = hook pattern of the title):
+{trends or "(no research data this run)"}
+
+Use the research: pick a theme, angle or hook pattern that is clearly working right now, then
+make it OUR OWN with a fresh, provable number. Never copy a title or a video.
 
 {POLICY}
 
@@ -75,6 +83,7 @@ Already covered (do NOT repeat or closely paraphrase):
 Pick ONE specific, curiosity-driven topic built around a surprising number a US viewer can relate to.
 Return JSON:
 {{"topic": "...", "angle": "one sentence on the surprising insight",
+  "inspired_by": "which trending theme/pattern from the research this rides (or 'none')",
   "calcs": [{{"id": "c1", "name": "<calculator>", "args": {{...}}}}],
   "facts": [{{"claim": "...", "source": "..."}}]}}
 Use calculators for every computed number. 'facts' only for stable published figures you are sure of."""
@@ -94,7 +103,7 @@ SCENE_DOC = """Scene types (each scene = one beat, 3-6 seconds of narration):
 - {"type":"cta","line1":"...","line2":"..."}"""
 
 
-def write_script(plan):
+def write_script(plan, trend_tags=""):
     results = json.dumps(plan["calc_results"], indent=1)
     facts = json.dumps(plan.get("facts", []), indent=1)
     msg = f"""Write a YouTube Short (35-45 seconds spoken, 90-105 words of narration in total, count them) for "{CHANNEL}".
@@ -113,6 +122,8 @@ Hook formulas (first line must use one; confirm the title, open a gap, prove a p
 
 {SCENE_DOC}
 
+Trending hashtags in this niche right now: {trend_tags}
+
 Structure: hook (first 3 s) -> setup -> the shocking number -> the twist/why -> the fix or takeaway -> cta.
 No channel intro. One idea. The cta is one short line (e.g. follow for one money fact a day).
 Narration ("voice") must sound natural spoken US English; write numbers as digits with $ and % (they are read aloud correctly).
@@ -120,7 +131,9 @@ Narration ("voice") must sound natural spoken US English; write numbers as digit
 
 Return JSON:
 {{"hooks": ["5 alternative first lines, 9-24 words each"],
-  "titles": ["10 title options, <= 60 chars, with a number, no more than 2 ALL-CAPS words"],
+  "titles": ["10 title options, 25-45 characters, punchy, curiosity + a number, no emojis, no hashtags, max 2 ALL-CAPS words"],
+  "emojis": ["the 2 emojis that best fit the title, e.g. a money or shock emoji"],
+  "hashtags": ["3 topic hashtags without #, chosen from the trending hashtags below when relevant"],
   "description": "2-3 sentence description with the source names, then 3 relevant hashtags incl #shorts",
   "tags": ["8-12 search tags"],
   "scenes": [{{"type": "...", ..., "voice": "...", "caption": "..."}}]}}
@@ -156,7 +169,17 @@ def best_hook_and_title(script):
         script["scenes"][0]["caption"] = scored[0][1]
     titles = [t for t in script.get("titles", []) if isinstance(t, str)]
     ranked = sorted((titlelint.check(t) for t in titles), key=lambda r: -r["score"])
-    script["title"] = ranked[0]["title"][:100] if ranked else script.get("titles", ["Money fact"])[0]
+    core = ranked[0]["title"] if ranked else (script.get("titles") or ["Money fact"])[0]
+    core = re.sub(r"#\w+", "", core).strip()[:60]
+    emo = "".join(e for e in (script.get("emojis") or [])[:2] if isinstance(e, str) and len(e) <= 4)
+    base = ["shorts", "ytshorts", "viral"]
+    script["title"] = f"{core} {emo} " + " ".join("#" + h for h in base)
+    script["title"] = re.sub(r"\s+", " ", script["title"]).strip()[:100]
+    topic_tags = [re.sub(r"[^A-Za-z0-9]", "", str(h)).lower() for h in (script.get("hashtags") or [])]
+    topic_tags = [h for h in topic_tags if 2 < len(h) <= 30 and h not in base][:3]
+    tagline = " ".join("#" + h for h in dict.fromkeys(base + topic_tags + ["personalfinance", "money"]))
+    desc = re.sub(r"#\w+", "", script.get("description", "")).strip()
+    script["description"] = f"{desc}\n\n{tagline}"
     script["hook_score"] = scored[0][0] if scored else None
     script["title_score"] = ranked[0]["score"] if ranked else None
     return script
@@ -189,21 +212,21 @@ Problems:
 {json.dumps(problems, indent=1)}
 
 Current script JSON:
-{json.dumps({k: script[k] for k in ('hooks', 'titles', 'description', 'tags', 'scenes') if k in script}, indent=1)}
+{json.dumps({k: script[k] for k in ('hooks', 'titles', 'emojis', 'hashtags', 'description', 'tags', 'scenes') if k in script}, indent=1)}
 
-Return the full corrected JSON with keys hooks, titles, description, tags, scenes."""
+Return the full corrected JSON with keys hooks, titles, emojis, hashtags, description, tags, scenes."""
     return chat([{"role": "user", "content": msg}], temperature=0.4, max_tokens=5000)
 
 
-def generate(history, seed=None, max_topics=3, max_revisions=2):
+def generate(history, seed=None, max_topics=3, max_revisions=2, trends=None, trend_tags="", avoid=()):
     rng = random.Random(seed)
     last_err = None
     for _ in range(max_topics):
-        plan = plan_topic(history, rng)
+        plan = plan_topic(history, rng, trends, avoid)
         if any("error" in c["result"] for c in plan["calc_results"]):
             last_err = f"calculator error: {plan['calc_results']}"
             continue
-        script = write_script(plan)
+        script = write_script(plan, trend_tags)
         for rev in range(max_revisions + 1):
             if not script.get("scenes"):
                 last_err = "empty script"; break
@@ -216,5 +239,8 @@ def generate(history, seed=None, max_topics=3, max_revisions=2):
                 return script
             last_err = f"fact check failed: {check.get('problems')}"
             if rev < max_revisions:
+                old = script
                 script = revise(plan, script, check.get("problems", []))
+                for k in ("emojis", "hashtags"):
+                    script.setdefault(k, old.get(k))
     raise RuntimeError(f"could not produce a verified script: {last_err}")

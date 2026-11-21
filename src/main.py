@@ -5,7 +5,7 @@
 """
 import json, os, sys, time, datetime, tempfile, shutil, traceback
 
-from src import script_gen, voice, render_short, youtube
+from src import script_gen, voice, render_short, youtube, research
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HIST = os.path.join(ROOT, "data", "history.json")
@@ -73,11 +73,26 @@ def slot_times(now_utc=None):
     return out
 
 
-def make_short(do_upload=False, publish_at=None):
+def do_research():
+    """Market research once per run; never fatal (falls back to no data)."""
+    try:
+        res = research.trending(youtube.access_token())
+        os.makedirs(os.path.dirname(REPORT), exist_ok=True)
+        open(os.path.join(ROOT, "reports", "research.md"), "w").write(
+            f"# Market research ({datetime.datetime.utcnow():%Y-%m-%d %H:%M} UTC)\n\n" + research.to_markdown(res) + "\n")
+        return res
+    except Exception as e:
+        print("research failed:", e)
+        return None
+
+
+def make_short(do_upload=False, publish_at=None, res=None, avoid=()):
     os.makedirs(OUT, exist_ok=True)
     hist = load_hist()
     t0 = time.time()
-    script = script_gen.generate(hist)
+    script = script_gen.generate(hist, trends=research.summary_for_prompt(res) if res else None,
+                                 trend_tags=" ".join("#" + h for h in (res or {}).get("hashtags", [])[:20]),
+                                 avoid=avoid)
     work = tempfile.mkdtemp()
     json.dump(script, open(os.path.join(OUT, "last_script.json"), "w"), indent=1)
     try:
@@ -97,6 +112,7 @@ def make_short(do_upload=False, publish_at=None):
         shutil.rmtree(work, ignore_errors=True)
     json.dump(script, open(mp4.replace(".mp4", ".json"), "w"), indent=1)
     lines = [f"- topic: {script['plan']['topic']} ({script['plan']['pillar']})",
+             f"- inspired by trend: {script['plan'].get('inspired_by', '-')}",
              f"- title: {script['title']} (title score {script.get('title_score')}, hook score {script.get('hook_score')})",
              f"- length: {total:.1f}s, built in {time.time() - t0:.0f}s",
              f"- fact check: (revisions {script.get('revisions')}) {'passed' if script['fact_check'].get('ok') else script['fact_check']}"]
@@ -122,11 +138,14 @@ def main():
         if not ok:
             report(["## Setup check"] + lines); sys.exit(1)
         lines = ["## Setup check"] + lines
-        done = 0
+        res = do_research()
+        lines += ["", f"## Market research: {'OK, ' + str(len(res['videos'])) + ' trending Shorts analysed (see reports/research.md)' if res else 'failed, continuing without it'}"]
+        done, made = 0, []
         for i, t in enumerate(slot_times()):
             lines += ["", f"## Short {i + 1} (slot {SLOTS_ET[i]} ET = {t})"]
             try:
-                lines += make_short(True, publish_at=t); done += 1
+                out = make_short(True, publish_at=t, res=res, avoid=made); lines += out; done += 1
+                made += [l[9:] for l in out if l.startswith("- topic: ")]
             except Exception as e:
                 lines += [f"- FAILED: {e}", "```", traceback.format_exc()[-1500:], "```"]
         report(lines)
@@ -138,7 +157,8 @@ def main():
             ok, lines = check()
             if not ok:
                 report(["## Setup check"] + lines); sys.exit(1)
-            lines = ["## Setup check"] + lines + ["", "## Short"] + make_short("--upload" in sys.argv)
+            res = do_research()
+            lines = ["## Setup check"] + lines + ["", "## Short"] + make_short("--upload" in sys.argv, res=res)
             report(lines)
     except SystemExit:
         raise
