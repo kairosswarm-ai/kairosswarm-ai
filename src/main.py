@@ -79,7 +79,7 @@ def make_short(do_upload=False):
     lines = [f"- topic: {script['plan']['topic']} ({script['plan']['pillar']})",
              f"- title: {script['title']} (title score {script.get('title_score')}, hook score {script.get('hook_score')})",
              f"- length: {total:.1f}s, built in {time.time() - t0:.0f}s",
-             f"- fact check: {'passed' if script['fact_check'].get('ok') else script['fact_check']}"]
+             f"- fact check: (revisions {script.get('revisions')}) {'passed' if script['fact_check'].get('ok') else script['fact_check']}"]
     entry = {"date": stamp, "topic": script["plan"]["topic"], "title": script["title"], "pillar": script["plan"]["pillar"]}
     if do_upload:
         tok = youtube.access_token()

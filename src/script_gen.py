@@ -24,6 +24,8 @@ POLICY = """Hard rules (YouTube policy + accuracy):
 - Never invent a statistic. Only use (a) results returned by the calculators, or (b) widely
   published, stable facts that you are confident are correct, each with a named source
   (e.g. Federal Reserve, Bankrate, IRS, company annual report). If unsure, leave the number out.
+- Never divide or subtract figures of different kinds (revenue vs profit, gross vs net, yearly vs
+  monthly). Prefer topics the calculators can fully prove. State facts with their year.
 - No clickbait the video does not pay off. The hook's promise must be delivered.
 - No mentions of being AI, no fake personal stories ("I lost $10k"), no fake testimonials.
 - No copyrighted characters, brands as mascots, or song lyrics."""
@@ -176,24 +178,43 @@ Return JSON: {{"scenes": [...same scenes with shorter voice/caption...]}}"""
     return script
 
 
-def generate(history, seed=None, max_attempts=3):
+def revise(plan, script, problems):
+    msg = f"""A fact checker rejected this YouTube Short. Fix EVERY problem below. If a claim cannot be
+made accurate, remove it (and any title using it) rather than rewording it. Keep the same JSON shape.
+Allowed numbers: calculator results {json.dumps(plan['calc_results'])} and sourced facts {json.dumps(plan.get('facts', []))}.
+
+{POLICY}
+
+Problems:
+{json.dumps(problems, indent=1)}
+
+Current script JSON:
+{json.dumps({k: script[k] for k in ('hooks', 'titles', 'description', 'tags', 'scenes') if k in script}, indent=1)}
+
+Return the full corrected JSON with keys hooks, titles, description, tags, scenes."""
+    return chat([{"role": "user", "content": msg}], temperature=0.4, max_tokens=5000)
+
+
+def generate(history, seed=None, max_topics=3, max_revisions=2):
     rng = random.Random(seed)
     last_err = None
-    for attempt in range(max_attempts):
+    for _ in range(max_topics):
         plan = plan_topic(history, rng)
         if any("error" in c["result"] for c in plan["calc_results"]):
             last_err = f"calculator error: {plan['calc_results']}"
             continue
         script = write_script(plan)
-        if not script.get("scenes"):
-            last_err = "empty script"
-            continue
-        check = verify(plan, script)
-        if not check.get("ok"):
+        for rev in range(max_revisions + 1):
+            if not script.get("scenes"):
+                last_err = "empty script"; break
+            check = verify(plan, script)
+            if check.get("ok"):
+                script = best_hook_and_title(script)
+                script["plan"] = plan
+                script["fact_check"] = check
+                script["revisions"] = rev
+                return script
             last_err = f"fact check failed: {check.get('problems')}"
-            continue
-        script = best_hook_and_title(script)
-        script["plan"] = plan
-        script["fact_check"] = check
-        return script
+            if rev < max_revisions:
+                script = revise(plan, script, check.get("problems", []))
     raise RuntimeError(f"could not produce a verified script: {last_err}")
