@@ -1,23 +1,23 @@
-# Market research (2026-11-21 17:52 UTC)
+# Market research (2026-11-21 17:56 UTC)
 
-Searched: taxes, mortgage, roth ira, student loans, side hustle
+Searched: compound interest, car loan, budgeting, 401k, billionaire
 
 | x channel | views | formula | title |
 |---|---|---|---|
-| 66.5 | 486,733 | Unclassified | [You finally realize how taxes actually work 😅#POV #Comedy #Cartoon #Animation #shorts](https://youtube.com/shorts/w_tpjHF3GtU) |
-| 33.0 | 32,959 | Unclassified | [Shinchan machli bech rha ha ❤️ #shorts #explore](https://youtube.com/shorts/nlYblLBtscY) |
-| 24.1 | 24,128 | Unclassified | [Her Friends Said Paying Off Her House Was a MISTAKE 😳🏡](https://youtube.com/shorts/GHUR0Euz8Rk) |
-| 12.2 | 30,573 | Unclassified | [One Income Isn't Enough. Build More Streams #shorts #viralvideo](https://youtube.com/shorts/RMJESxNuv0A) |
-| 8.5 | 53,466 | The Question | [How Life Sounds When You're an Income Tax Inspector  #shorts  #motivation #sscsubinspector](https://youtube.com/shorts/Y-sVHDoZZZw) |
-| 7.5 | 25,331 | Unclassified | [Jay-Z and Beyoncé Face $536K Monthly Mortgage Payments #short #storytrending](https://youtube.com/shorts/wpDie7NIenE) |
-| 2.8 | 27,223 | The Statistic | [Their $536,000+ Monthly Mortgage Payment Is Insane! 😭💸#shorts](https://youtube.com/shorts/cQ1CXwirR2k) |
-| 2.6 | 273,672 | Unclassified | [She really said higher taxes 💀 #shorts](https://youtube.com/shorts/lv4lIo4sxHg) |
-| 2.5 | 39,022 | The Question | [How to Find High-Paying Remote US Jobs From India in 2026 💼 #Shorts #Freelancing #SideHustle](https://youtube.com/shorts/wAQLUUnxH3c) |
-| 2.4 | 208,139 | Unclassified | [The Middle Class Gets ROBBED! 😂💸 #funny #relatable #shorts](https://youtube.com/shorts/-AEdf66XpNM) |
-| 2.3 | 56,468 | Unclassified | [My sister charged me $400 a month in “child-free tax”... #shorts #redditstories](https://youtube.com/shorts/AnvPq_by7iw) |
-| 2.2 | 192,965 | Unclassified | [Paying Off Your House Is a SCAM! 😂🏡 #funny #relatable #shorts](https://youtube.com/shorts/tWuNfmARZDk) |
-| 1.7 | 26,701 | The List | [4 Secret Websites ONLY Highly Ambitious People Know! 💸 #Shorts #MakeMoneyOnline #SideHustle](https://youtube.com/shorts/-GC3ZEo8A0Q) |
-| 1.4 | 42,808 | The Question | [Why the Joker thinks tax evasion is easier than organizing your money?](https://youtube.com/shorts/kFnx3Vtj8n0) |
-| 1.4 | 59,096 | Unclassified | [A mortgage recast can lower monthly payments after a lump-sum principal payment #shorts](https://youtube.com/shorts/NmTGSkjBLmE) |
+| 139.6 | 453,669 | Unclassified | [They Laughed After Kicking Their Mother Out… Until a Billionaire’s Limousine Stopped! 😱](https://youtube.com/shorts/WTMnWYrDr84) |
+| 81.6 | 115,899 | Unclassified | [A billionaire gets in your taxi! 🚕 #Shorts](https://youtube.com/shorts/kzOOTwl8AdU) |
+| 34.0 | 33,954 | The Comparison | [Subscriptions vs Cancelling them #shorts](https://youtube.com/shorts/zdjFjQ2Vc70) |
+| 25.3 | 25,297 | Unclassified | [Ramayana Budget Scam Exposed🤫!](https://youtube.com/shorts/kFJHKbBwgS0) |
+| 21.6 | 40,877 | Unclassified | [RAMAYANA part 1 BUDGET is NOT ₹2,000 CRORE? 😳 #shorts #ramayana](https://youtube.com/shorts/M-ygC2ZZ_lQ) |
+| 11.5 | 500,755 | Unclassified | [SHE ABANDONED US… THEN A BILLIONAIRE SHOWED UP  #reels #roblox #robloxedit #berryave #story #shorts](https://youtube.com/shorts/hHTghPU-KQI) |
+| 9.9 | 164,627 | Unclassified | [Bro, You Are NOT a Billionaire 💀 #shorts #usa](https://youtube.com/shorts/qLDZgnG6Lzo) |
+| 8.0 | 304,301 | Unclassified | [She Poured a Drink on a Quiet Woman to Impress a Billionaire, Not Knowing She Was His Wife #shorts](https://youtube.com/shorts/Mwt38xP_pqk) |
+| 4.1 | 163,857 | The Statistic | [THE BILLIONAIRE OFFERED A WAITRESS $50,000 TO DANCE.. #shorts #shortvideo](https://youtube.com/shorts/s_kKnd_qoXY) |
+| 2.4 | 54,883 | The Comparison | [Lawyers vs. Budget 💯 #shorts](https://youtube.com/shorts/lBqflmUtxUQ) |
+| 1.2 | 2,902,455 | Unclassified | [He Became a BILLIONAIRE at 26 🤯](https://youtube.com/shorts/vuucliYxnjA) |
+| 1.1 | 123,280 | Unclassified | [She Married a Poor Man, But He Was Secretly a Billionaire! 😱💍  #chinesedrama #koreandrama #shorts](https://youtube.com/shorts/wcTOGH-e4Cw) |
+| 0.2 | 470,447 | Unclassified | [Ray Dalio Went Broke at 30… Then Became a Billionaire](https://youtube.com/shorts/0tadaNIo8xI) |
+| 0.1 | 221,732 | Unclassified | [💗 I Bought A Chocolate Bar And Became A Billionaire 🏡 Roblox Story #roblox #shorts](https://youtube.com/shorts/reV9Yib31ZI) |
+| 0.0 | 21,083 | Unclassified | [Compound interest breakdown 😂 #shorts](https://youtube.com/shorts/e2-f_EtKgsY) |
 
-Top hashtags: #shorts #sidehustle #relatable #viral #funny #taxes #cartoon #comedy #usa #over50 #finance #money #personalfinance #beyonce #jayz
+Top hashtags: #shorts #financialfreedom #roblox #emotionalstory #ramayana #ranbirkapoor #yash #motivation #entrepreneur #wealth #billionaire #instantkarma #karma #viralshorts #storytime
