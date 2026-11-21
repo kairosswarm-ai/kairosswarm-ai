@@ -1,7 +1,8 @@
 """Compound Shock v2 renderer: AI images with motion, punchy captions, overlays, SFX cues.
 1080x1920 @30fps, frames piped into ffmpeg. Text stays inside the Shorts safe zone."""
 import math, os, re, subprocess
-from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance
+import random
+from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance, ImageChops
 
 W, H, FPS = 1080, 1920, 30
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -82,6 +83,12 @@ def cover(im, w, h):
 def kenburns(im, p, motion, w=W, h=H):
     """im is pre-scaled to 1.18x the frame. p in 0..1 (linear drift looks most natural)."""
     zz0, zz1, dx, dy = 1.02, 1.16, 0.0, 0.0
+    if motion == "crash_zoom":  # fast push in, then a slow creep
+        zz = 1.0 + 0.13 * ease(p / 0.22) + 0.04 * max(0.0, (p - 0.22) / 0.78)
+        cw, ch = int(im.width / zz), int(im.height / zz)
+        return im.crop(((im.width - cw) // 2, (im.height - ch) // 2, (im.width + cw) // 2, (im.height + ch) // 2)).resize((w, h), Image.BILINEAR)
+    if motion == "drift":
+        zz0, zz1, dx, dy = 1.06, 1.14, 0.7, 0.5
     if motion == "zoom_out": zz0, zz1 = 1.16, 1.02
     elif motion in ("pan_left", "pan_right", "pan_up"):
         zz0 = zz1 = 1.12; dx = 1 if motion == "pan_left" else (-1 if motion == "pan_right" else 0); dy = 1 if motion == "pan_up" else 0
@@ -93,8 +100,42 @@ def kenburns(im, p, motion, w=W, h=H):
     return im.crop((int(x), int(y), int(x) + cw, int(y) + ch)).resize((w, h), Image.BILINEAR)
 
 
-def prep(im, w=W, h=H):
-    return cover(im, int(w * 1.18), int(h * 1.18))
+GRADES = ["teal_orange", "warm", "cool_noir", "punchy", "film"]
+
+
+def grade(im, kind):
+    r, g, b = im.split()
+    if kind == "teal_orange":
+        r = r.point(lambda v: min(255, int(v * 1.06 + 6))); b = b.point(lambda v: int(v * 0.9 + 18 * (1 - v / 255)))
+        im = Image.merge("RGB", (r, g, b)); im = ImageEnhance.Contrast(im).enhance(1.12)
+    elif kind == "warm":
+        r = r.point(lambda v: min(255, int(v * 1.08))); b = b.point(lambda v: int(v * 0.88))
+        im = Image.merge("RGB", (r, g, b)); im = ImageEnhance.Color(im).enhance(1.1)
+    elif kind == "cool_noir":
+        im = ImageEnhance.Color(im).enhance(0.55); r, g, b = im.split()
+        b = b.point(lambda v: min(255, int(v * 1.08 + 8))); im = Image.merge("RGB", (r, g, b))
+        im = ImageEnhance.Contrast(im).enhance(1.25)
+    elif kind == "punchy":
+        im = ImageEnhance.Contrast(im).enhance(1.2); im = ImageEnhance.Color(im).enhance(1.25)
+    else:  # soft film: lifted blacks, slightly muted
+        im = im.point(lambda v: int(18 + v * 0.9)); im = ImageEnhance.Color(im).enhance(0.9)
+    return im
+
+
+def prep(im, w=W, h=H, kind="film"):
+    return grade(cover(im, int(w * 1.18), int(h * 1.18)), kind)
+
+
+_GRAIN = []
+
+
+def grain(frame, i, amt=0.05):
+    if not _GRAIN:
+        rnd = random.Random(7)
+        for _ in range(6):
+            n = Image.effect_noise((W // 2, H // 2), 40).resize((W, H), Image.NEAREST).convert("RGB")
+            _GRAIN.append(n)
+    return Image.blend(frame, _GRAIN[i % len(_GRAIN)], amt)
 
 
 _SHADE = None
@@ -108,7 +149,14 @@ def darken(img, top=0.35, bottom=0.65):
         for y in range(H):
             t = y / H
             g.putpixel((0, y), int(255 * min(0.85, top * (1 - t) ** 2 + bottom * t ** 1.5)))
-        _SHADE = (g.resize((W, H)), Image.new("RGB", (W, H), (0, 0, 0)))
+        g = g.resize((W, H))
+        # cinematic vignette
+        v = Image.new("L", (W // 4, H // 4), 0); vd = ImageDraw.Draw(v)
+        for k in range(40):
+            a = int(150 * (1 - k / 40) ** 2)
+            vd.ellipse((-W // 8 + k * 6, -H // 8 + k * 10, W // 4 + W // 8 - k * 6, H // 4 + H // 8 - k * 10), outline=a, width=6)
+        v = v.filter(ImageFilter.GaussianBlur(20)).resize((W, H))
+        _SHADE = (ImageChops.lighter(g, v), Image.new("RGB", (W, H), (0, 0, 0)))
     return Image.composite(_SHADE[1], img, _SHADE[0])
 
 
@@ -337,14 +385,18 @@ def render(scenes, segs, audio_path, out_path, total, images, style_idx=0, logo_
     if logo is not None:
         bug = logo.resize((92, 92), Image.LANCZOS)
         bm = Image.new("L", (92, 92), 0); ImageDraw.Draw(bm).ellipse((0, 0, 91, 91), fill=220)
+    gk = GRADES[style_idx % len(GRADES)]
     pre = {}
     for i, s in enumerate(scenes):
         im = images.get(i)
         if isinstance(im, Image.Image):
-            pre[i] = prep(im)
+            pre[i] = prep(im, kind=gk)
         elif isinstance(im, dict) and im.get("bg") is not None:
-            pre[i] = prep(im["bg"])
-    motions = ["zoom_in", "pan_left", "zoom_out", "pan_up", "pan_right"]
+            pre[i] = prep(im["bg"], kind=gk)
+        if isinstance(im, dict):
+            for kk in ("v0", "v1"):
+                if im.get(kk) is not None: im[kk] = grade(im[kk], gk)
+    motions = ["crash_zoom", "pan_left", "zoom_out", "drift", "zoom_in", "pan_up", "pan_right"]
     proc = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24",
                              "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-", "-i", audio_path,
                              "-c:v", "libx264", "-preset", "veryfast", "-crf", "19", "-pix_fmt", "yuv420p",
@@ -371,9 +423,15 @@ def render(scenes, segs, audio_path, out_path, total, images, style_idx=0, logo_
         # punch-in on scene start
         local = tt - a
         if 0 <= local < 0.2 and k > 0:
-            z = 1.0 + 0.06 * (1 - local / 0.2)
-            cw, ch = int(W / z), int(H / z)
-            frame = frame.crop(((W - cw) // 2, (H - ch) // 2, (W + cw) // 2, (H + ch) // 2)).resize((W, H), Image.BILINEAR)
+            if k % 2:  # whip pan with motion blur
+                off = int((1 - local / 0.2) ** 2 * W * 0.45) * (1 if k % 4 == 1 else -1)
+                frame = ImageChops.offset(frame, off, 0).resize((W // 24, H), Image.BILINEAR).resize((W, H), Image.BILINEAR) \
+                    if local < 0.12 else ImageChops.offset(frame, off, 0)
+            else:  # punch in
+                z = 1.0 + 0.07 * (1 - local / 0.2)
+                cw, ch = int(W / z), int(H / z)
+                frame = frame.crop(((W - cw) // 2, (H - ch) // 2, (W + cw) // 2, (H + ch) // 2)).resize((W, H), Image.BILINEAR)
+        frame = grain(frame, fi)
         d = ImageDraw.Draw(frame)
         try:
             if s.get("type") == "cta":

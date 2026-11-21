@@ -7,7 +7,7 @@ import json, os, sys, time, datetime, tempfile, shutil, traceback
 
 import random
 from concurrent.futures import ThreadPoolExecutor
-from src import script_gen, voice, youtube, research, images as imgmod, sfx, render_v2
+from src import script_gen, voice, youtube, research, images as imgmod, sfx, render_v2, learn
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HIST = os.path.join(ROOT, "data", "history.json")
@@ -125,7 +125,7 @@ def scene_images(script, cache):
     return out, stats
 
 
-def make_short(do_upload=False, publish_at=None, res=None, avoid=()):
+def make_short(do_upload=False, publish_at=None, res=None, avoid=(), lessons=""):
     os.makedirs(OUT, exist_ok=True)
     hist = load_hist()
     t0 = time.time()
@@ -133,7 +133,8 @@ def make_short(do_upload=False, publish_at=None, res=None, avoid=()):
     style_idx = random.randrange(0, 15)
     script = script_gen.generate(hist, trends=research.summary_for_prompt(res) if res else None,
                                  trend_tags=" ".join("#" + h for h in (res or {}).get("hashtags", [])[:20]),
-                                 avoid=avoid, fmt=fmt)
+                                 avoid=avoid, fmt=fmt, lessons=lessons,
+                                 similar=lambda sc: learn.too_similar(sc, hist))
     work = tempfile.mkdtemp()
     json.dump(script, open(os.path.join(OUT, "last_script.json"), "w"), indent=1)
     stamp = datetime.datetime.utcnow().strftime("%Y%m%d-%H%M%S")
@@ -163,7 +164,8 @@ def make_short(do_upload=False, publish_at=None, res=None, avoid=()):
              f"- length: {total:.1f}s, built in {time.time() - t0:.0f}s",
              f"- fact check: (revisions {script.get('revisions')}) {'passed' if script['fact_check'].get('ok') else script['fact_check']}"]
     entry = {"date": stamp, "topic": script["plan"]["topic"], "title": script["title"], "pillar": script["plan"]["pillar"],
-             "format": fmt}
+             "format": fmt, "style": script.get("visual_style", ""),
+             "hook": (script.get("scenes") or [{}])[0].get("voice", "")}
     if do_upload:
         tok = youtube.access_token()
         desc = script.get("description", "")
@@ -186,12 +188,17 @@ def main():
             report(["## Setup check"] + lines); sys.exit(1)
         lines = ["## Setup check"] + lines
         res = do_research()
+        try:
+            rows = learn.own_stats(youtube.access_token(), load_hist()); lessons = learn.lessons(rows)
+        except Exception as e:
+            rows, lessons = [], ""
+        lines += ["", f"## Own channel: {len(rows)} past Shorts checked" + (f", best so far {rows[0]['views']:,} views" if rows else "")]
         lines += ["", f"## Market research: {'OK, ' + str(len(res['videos'])) + ' trending Shorts analysed (see reports/research.md)' if res else 'failed, continuing without it'}"]
         done, made = 0, []
         for i, t in enumerate(slot_times()):
             lines += ["", f"## Short {i + 1} (slot {SLOTS_ET[i]} ET = {t})"]
             try:
-                out = make_short(True, publish_at=t, res=res, avoid=made); lines += out; done += 1
+                out = make_short(True, publish_at=t, res=res, avoid=made, lessons=lessons); lines += out; done += 1
                 made += [l[9:] for l in out if l.startswith("- topic: ")]
             except Exception as e:
                 lines += [f"- FAILED: {e}", "```", traceback.format_exc()[-1500:], "```"]

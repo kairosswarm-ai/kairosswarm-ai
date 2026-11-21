@@ -59,7 +59,7 @@ def pick_pillar(rng):
     return PILLARS[0][0], PILLARS[0][2]
 
 
-def plan_topic(history, rng, trends=None, avoid=()):
+def plan_topic(history, rng, trends=None, avoid=(), lessons=""):
     pillar, desc = pick_pillar(rng)
     recent = "\n".join(f"- {h['topic']}" for h in history[-60:]) or "(none yet)"
     msg = f"""You plan YouTube Shorts for "{CHANNEL}", a faceless US-audience channel of animated
@@ -73,6 +73,9 @@ MARKET RESEARCH - US money/business Shorts that beat their own channel the most 
 (multiple = views / channel subscribers; formula = hook pattern of the title):
 {trends or "(no research data this run)"}
 
+WHAT WORKS ON OUR OWN CHANNEL:
+{lessons or "(no data yet)"}
+
 Use the research: pick a theme, angle or hook pattern that is clearly working right now, then
 make it OUR OWN with a fresh, provable number. Never copy a title or a video.
 
@@ -81,6 +84,9 @@ make it OUR OWN with a fresh, provable number. Never copy a title or a video.
 {CALC_DOCS}
 
 Pick ONE specific, curiosity-driven topic built around a surprising number a US viewer can relate to.
+It must be a situation the viewer is living RIGHT NOW (their paycheck, card, car, rent, groceries, phone bill,
+job, taxes) so it feels like it is happening to them, and it must end in a concrete fix they can do today.
+It must be clearly different from every covered topic above: new situation, new number, new angle.
 Return JSON:
 {{"topic": "...", "angle": "one sentence on the surprising insight",
   "inspired_by": "which trending theme/pattern from the research this rides (or 'none')",
@@ -96,7 +102,7 @@ Use calculators for every computed number. 'facts' only for stable published fig
 SCENE_DOC = """Scene types (each scene = one beat, 3-7 seconds of narration). Every scene except cta has an
 "image_prompt": a vivid, specific, cinematic photo description that SHOWS the beat (real places, objects,
 everyday US life, money, cars, homes, stores, cards). NO text, numbers, logos, brands or famous people in it.
-- {"type":"image","image_prompt":"...","motion":"zoom_in|zoom_out|pan_left|pan_right|pan_up",
+- {"type":"image","image_prompt":"...","motion":"zoom_in|zoom_out|pan_left|pan_right|pan_up|crash_zoom|drift",
    "headline":"optional 2-5 WORD title on screen",
    "overlay":{"value":8100,"prefix":"$","suffix":"","label":"IN INTEREST","color":"red|green|yellow","note":"optional source"}}
    (use overlay only for the key number of that beat; headline and overlay are both optional)
@@ -116,7 +122,7 @@ FORMATS = {
 }
 
 
-def write_script(plan, trend_tags="", fmt="story"):
+def write_script(plan, trend_tags="", fmt="story", recent_styles=(), recent_hooks=()):
     results = json.dumps(plan["calc_results"], indent=1)
     facts = json.dumps(plan.get("facts", []), indent=1)
     msg = f"""Write a YouTube Short (35-45 seconds spoken, 90-105 words of narration in total, count them) for "{CHANNEL}".
@@ -136,12 +142,24 @@ Hook formulas (first line must use one; confirm the title, open a gap, prove a p
 {SCENE_DOC}
 
 FORMAT FOR THIS VIDEO (follow it exactly): {FORMATS.get(fmt, FORMATS['story'])}
-Also give "visual_style": one line describing a consistent photographic look for all images of this video
-(lighting, colour grade, lens), e.g. "cinematic, warm golden hour, shallow depth of field, 35mm".
+Also give "visual_style": one line describing a consistent CINEMATIC film look for all images of this video
+(film stock / colour grade, lighting, lens), e.g. "anamorphic 40mm, teal-and-orange grade, neon rim light, rain".
+It must be clearly different from these recent looks: {list(recent_styles)[-6:]}
+Each image_prompt must read like a film shot: shot type (extreme close-up, wide establishing, low angle,
+over-the-shoulder, top-down, dutch angle), subject and action, setting, light. Vary the shot type every scene.
+Pick "motion" per scene from: zoom_in, zoom_out, pan_left, pan_right, pan_up, crash_zoom, drift.
 
 Trending hashtags in this niche right now: {trend_tags}
 
 Length and pacing: 6-8 scenes, each scene 1-2 short sentences (max 24 words), so the picture changes every 4-6 seconds.
+VOICE: talk TO the viewer in second person, like a friend who caught them in the act.
+- The hook drops them into the moment: "You just...", "POV: you...", "If you have a ... right now...",
+  "Stop. Before you swipe that card...". It names their exact situation and opens a loop the video pays off.
+- Make it interactive: ask them something they answer in their head ("Guess how much...", "Be honest...",
+  "Check your last statement..."), and later pay it off.
+- Middle: the twist with the true number, then WHY it happens in one line.
+- End: give THE SOLUTION as 1-3 concrete steps they can do today (exact action, not vague advice).
+- Never start the hook the way these recent hooks start: {list(recent_hooks)[-15:]}
 Structure: hook (first 3 s) -> setup -> the shocking number -> the twist/why -> the fix or takeaway -> cta.
 No channel intro. One idea. The LAST scene is type "cta" and must ask for all three, in ~15 spoken words:
 follow, like, and comment a money question that we will answer in a future video
@@ -267,15 +285,18 @@ Return the full corrected JSON with keys hooks, titles, emojis, hashtags, descri
     return chat([{"role": "user", "content": msg}], temperature=0.4, max_tokens=5000)
 
 
-def generate(history, seed=None, max_topics=3, max_revisions=2, trends=None, trend_tags="", avoid=(), fmt="story"):
+def generate(history, seed=None, max_topics=4, max_revisions=2, trends=None, trend_tags="", avoid=(), fmt="story",
+             lessons="", similar=None):
     rng = random.Random(seed)
     last_err = None
     for _ in range(max_topics):
-        plan = plan_topic(history, rng, trends, avoid)
+        plan = plan_topic(history, rng, trends, list(avoid), lessons)
         if any("error" in c["result"] for c in plan["calc_results"]):
             last_err = f"calculator error: {plan['calc_results']}"
             continue
-        script = write_script(plan, trend_tags, fmt)
+        script = write_script(plan, trend_tags, fmt,
+                              recent_styles=[h.get("style", "") for h in history[-6:] if h.get("style")],
+                              recent_hooks=[h.get("hook", "")[:40] for h in history[-15:] if h.get("hook")])
         for rev in range(max_revisions + 1):
             if not script.get("scenes"):
                 last_err = "empty script"; break
@@ -292,6 +313,11 @@ def generate(history, seed=None, max_topics=3, max_revisions=2, trends=None, tre
             if check.get("ok"):
                 script = best_hook_and_title(script)
                 script["plan"] = plan
+                why = similar(script) if similar else None
+                if why:
+                    last_err = f"repeat blocked: {why}"
+                    avoid = list(avoid) + [plan.get("topic", "")]
+                    break
                 script["fact_check"] = check
                 script["revisions"] = rev
                 return script
