@@ -1,23 +1,23 @@
-# Market research (2026-11-21 18:13 UTC)
+# Market research (2026-11-21 18:18 UTC)
 
-Searched: insurance, business facts, compound interest, student loans, mortgage
+Searched: inflation, compound interest, taxes, side hustle, credit card
 
 | x channel | views | formula | title |
 |---|---|---|---|
-| 24.1 | 24,128 | Unclassified | [Her Friends Said Paying Off Her House Was a MISTAKE 😳🏡](https://youtube.com/shorts/GHUR0Euz8Rk) |
-| 22.1 | 162,092 | The Question | [When You Have Insurance but Still Pay#POV #Comedy #Cartoon #Animation #shorts](https://youtube.com/shorts/KZCAZp_WSEU) |
-| 21.9 | 21,867 | Unclassified | [Joe's insurance won't cover $12 medicine](https://youtube.com/shorts/I3zOeSL9L3I) |
-| 20.5 | 20,452 | Unclassified | [Power Of Insurance 😱 #shorts #facts](https://youtube.com/shorts/eEC8d8f4FyU) |
-| 19.3 | 35,897 | Unclassified | [Bharat Ke 10 Sabse Ameer Log! 💰#RichestPeople #IndiaRichest  #BusinessFacts #MoneyFacts #ViralShorts](https://youtube.com/shorts/obbffTKQthI) |
-| 7.8 | 26,429 | Unclassified | [Jay-Z and Beyoncé Face $536K Monthly Mortgage Payments #short #storytrending](https://youtube.com/shorts/wpDie7NIenE) |
-| 2.8 | 27,223 | The Statistic | [Their $536,000+ Monthly Mortgage Payment Is Insane! 😭💸#shorts](https://youtube.com/shorts/cQ1CXwirR2k) |
-| 2.5 | 33,258 | Unclassified | [Insurance Denies Your Cancer Then Sponsors the Marathon #shorts](https://youtube.com/shorts/vyLeabnHaFc) |
-| 2.4 | 145,381 | The Question | [How Continental Was Founded✈️ #shorts #business](https://youtube.com/shorts/E_-WwmVRdsU) |
-| 2.2 | 193,155 | Unclassified | [Paying Off Your House Is a SCAM! 😂🏡 #funny #relatable #shorts](https://youtube.com/shorts/tWuNfmARZDk) |
-| 1.9 | 28,802 | Unclassified | [Health Insurance Explained Like You’re 5 #funny #comedy #jokes #fyp #shorts #memes #reels #trending](https://youtube.com/shorts/XProvyNIh58) |
-| 1.8 | 109,312 | The Question | [How Singapore Airlines Was Founded ✈ #shorts #business](https://youtube.com/shorts/B02NjFUabbg) |
-| 1.6 | 99,021 | The Question | [How Wise Was Founded 💵 #shorts #business](https://youtube.com/shorts/GNeRd2vyNKU) |
-| 1.5 | 283,253 | The Question | [Why Was a Boeing 727 Deliberately Crashed? 😱 #facts #shorts](https://youtube.com/shorts/JrWiAmscyig) |
-| 1.5 | 103,572 | Unclassified | [The Biggest Brands in Russia 🇷🇺 #russia #brands #company #putin #shorts](https://youtube.com/shorts/0rNeMKrO9Y0) |
+| 66.5 | 487,354 | Unclassified | [You finally realize how taxes actually work 😅#POV #Comedy #Cartoon #Animation #shorts](https://youtube.com/shorts/w_tpjHF3GtU) |
+| 33.0 | 32,959 | Unclassified | [Shinchan machli bech rha ha ❤️ #shorts #explore](https://youtube.com/shorts/nlYblLBtscY) |
+| 32.6 | 32,649 | The Question | [Why Is She Swiping A Credit Card In The Water! #shorts](https://youtube.com/shorts/LVX4yC8FOYI) |
+| 29.5 | 29,487 | Unclassified | [The REAL Story Behind Credit Cards](https://youtube.com/shorts/73pCud95Ss4) |
+| 29.0 | 28,967 | The Question | [Why are People Swiping Credit Cards in a Fountain?💳😯](https://youtube.com/shorts/cPOe6HNPGnE) |
+| 28.4 | 28,443 | The Question | [Why People Are Tapping Credit Cards Into This Fountain #shorts](https://youtube.com/shorts/968K2XfnLlI) |
+| 28.3 | 28,256 | The Question | [Why Are People Using Credit Cards at the Trevi Fountain? 😳 #Shorts](https://youtube.com/shorts/MRtX1qccNBE) |
+| 24.9 | 24,935 | The Question | [Why Can’t the Government Just Print More Money? 💸  #2danimation #animation](https://youtube.com/shorts/80Kgxns-1is) |
+| 23.9 | 23,905 | Unclassified | [Bam Margera Got His Credit Card Info Tattooed On Him So He Can Shop Online 😭💀 #shorts](https://youtube.com/shorts/m1wgrvrugFQ) |
+| 20.0 | 20,019 | Unclassified | [Every time the mayor prints money, my coins shrink.#shorts  #animation  #story  #money  #inflation](https://youtube.com/shorts/mlEWYM7HDmw) |
+| 17.7 | 584,703 | Unclassified | [Someone Stole His Credit Card 😱 / The Rookie #movie #usa #shorts #tvshow](https://youtube.com/shorts/L0T8hjLG_IY) |
+| 12.2 | 30,514 | Unclassified | [One Income Isn't Enough. Build More Streams #shorts #viralvideo](https://youtube.com/shorts/RMJESxNuv0A) |
+| 8.6 | 53,690 | The Question | [How Life Sounds When You're an Income Tax Inspector  #shorts  #motivation #sscsubinspector](https://youtube.com/shorts/Y-sVHDoZZZw) |
+| 7.2 | 329,171 | The Question | [Why Are People Using Credit Cards at This Fountain? 😳 #shorts](https://youtube.com/shorts/rx-MtFxu3bk) |
+| 2.6 | 275,339 | Unclassified | [She really said higher taxes 💀 #shorts](https://youtube.com/shorts/lv4lIo4sxHg) |
 
-Top hashtags: #shorts #facts #business #youtubeshorts #ytshorts #viralshorts #insurance #comedy #shortsfeed #funny #short #trending #relatable #hindifacts #viral
+Top hashtags: #shorts #funny #usa #money #inflation #viral #sidehustle #animation #comedy #relatable #taxes #trevifountain #fyp #history #pov
