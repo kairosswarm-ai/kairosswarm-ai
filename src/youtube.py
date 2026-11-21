@@ -16,6 +16,11 @@ def access_token():
     return r.json()["access_token"]
 
 
+def token_scopes(tok):
+    r = requests.get("https://oauth2.googleapis.com/tokeninfo", params={"access_token": tok}, timeout=30)
+    return r.json().get("scope", "").split() if r.status_code == 200 else []
+
+
 def my_channel(tok):
     r = requests.get(f"{API}/channels", timeout=30, params={"part": "snippet,statistics", "mine": "true"},
                      headers={"Authorization": f"Bearer {tok}"})

@@ -48,6 +48,9 @@ def check():
     try:
         tok = youtube.access_token(); ch = youtube.my_channel(tok)
         lines.append(f"- YouTube auth: OK, channel **{ch['title']}** ({ch['id']}), subscribers {ch['subscribers']}")
+        sc = [x.rsplit("/", 1)[-1] for x in youtube.token_scopes(tok)]
+        lines.append(f"- token scopes: {', '.join(sc) or 'unknown'}"
+                     + ("" if "youtube.force-ssl" in sc else "  (youtube.force-ssl missing: comment replies will not work)"))
     except Exception as e:
         ok = False; lines.append(f"- YouTube auth: FAILED ({str(e)[:300]})")
     return ok, lines
