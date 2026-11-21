@@ -5,7 +5,9 @@
 """
 import json, os, sys, time, datetime, tempfile, shutil, traceback
 
-from src import script_gen, voice, render_short, youtube, research
+import random
+from concurrent.futures import ThreadPoolExecutor
+from src import script_gen, voice, youtube, research, images as imgmod, sfx, render_v2
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HIST = os.path.join(ROOT, "data", "history.json")
@@ -91,15 +93,51 @@ def do_research():
         return None
 
 
+FORMAT_NAMES = list(script_gen.FORMATS)
+
+
+def pick_format(hist):
+    recent = [h.get("format") for h in hist[-2:]]
+    choices = [f for f in FORMAT_NAMES if f not in recent] or FORMAT_NAMES
+    return random.choice(choices)
+
+
+def scene_images(script, cache):
+    style = script.get("visual_style") or "cinematic photo, natural light, shallow depth of field"
+    jobs = {}
+    for i, sc in enumerate(script["scenes"]):
+        if sc.get("type") == "cta":
+            continue
+        if sc.get("type") == "versus":
+            for side, key in (("left", "v0"), ("right", "v1")):
+                pr = (sc.get(side) or {}).get("image_prompt")
+                if pr: jobs[(i, key)] = pr
+            if sc.get("image_prompt"): jobs[(i, "bg")] = sc["image_prompt"]
+        else:
+            jobs[(i, None)] = sc.get("image_prompt") or sc.get("caption") or sc.get("voice", "money")
+    out, stats = {}, {"ai": 0, "fallback": 0, "cache": 0}
+    with ThreadPoolExecutor(max_workers=6) as ex:
+        futs = {k: ex.submit(imgmod.generate, pr, style, cache) for k, pr in jobs.items()}
+        for (i, key), f in futs.items():
+            im, src = f.result(); stats[src] += 1
+            if key is None: out[i] = im
+            else: out.setdefault(i, {})[key] = im
+    return out, stats
+
+
 def make_short(do_upload=False, publish_at=None, res=None, avoid=()):
     os.makedirs(OUT, exist_ok=True)
     hist = load_hist()
     t0 = time.time()
+    fmt = pick_format(hist)
+    style_idx = random.randrange(0, 15)
     script = script_gen.generate(hist, trends=research.summary_for_prompt(res) if res else None,
                                  trend_tags=" ".join("#" + h for h in (res or {}).get("hashtags", [])[:20]),
-                                 avoid=avoid)
+                                 avoid=avoid, fmt=fmt)
     work = tempfile.mkdtemp()
     json.dump(script, open(os.path.join(OUT, "last_script.json"), "w"), indent=1)
+    stamp = datetime.datetime.utcnow().strftime("%Y%m%d-%H%M%S")
+    mp4 = os.path.join(OUT, f"short-{stamp}.mp4")
     try:
         segs, wav, total = voice.synth_scenes(script["scenes"], work)
         for _ in range(2):
@@ -110,18 +148,22 @@ def make_short(do_upload=False, publish_at=None, res=None, avoid=()):
             segs, wav, total = voice.synth_scenes(script["scenes"], work)
         if total > 70:
             raise RuntimeError(f"narration too long for a Short ({total:.1f}s)")
-        stamp = datetime.datetime.utcnow().strftime("%Y%m%d-%H%M")
-        mp4 = os.path.join(OUT, f"short-{stamp}.mp4")
-        render_short.render(script["scenes"], segs, wav, mp4, total)
+        pics, istats = scene_images(script, os.path.join(ROOT, "out", "imgcache"))
+        mixed = os.path.join(work, "mix.wav")
+        sfx.mix(wav, render_v2.sfx_events(script["scenes"], segs), total, mixed, seed=style_idx)
+        render_v2.render(script["scenes"], segs, mixed, mp4, total, pics, style_idx=style_idx,
+                         logo_path=os.path.join(ROOT, "branding", "logo_final.png"))
     finally:
         shutil.rmtree(work, ignore_errors=True)
     json.dump(script, open(mp4.replace(".mp4", ".json"), "w"), indent=1)
     lines = [f"- topic: {script['plan']['topic']} ({script['plan']['pillar']})",
              f"- inspired by trend: {script['plan'].get('inspired_by', '-')}",
              f"- title: {script['title']} (title score {script.get('title_score')}, hook score {script.get('hook_score')})",
+             f"- format: {fmt}, look #{style_idx}, images: {istats}",
              f"- length: {total:.1f}s, built in {time.time() - t0:.0f}s",
              f"- fact check: (revisions {script.get('revisions')}) {'passed' if script['fact_check'].get('ok') else script['fact_check']}"]
-    entry = {"date": stamp, "topic": script["plan"]["topic"], "title": script["title"], "pillar": script["plan"]["pillar"]}
+    entry = {"date": stamp, "topic": script["plan"]["topic"], "title": script["title"], "pillar": script["plan"]["pillar"],
+             "format": fmt}
     if do_upload:
         tok = youtube.access_token()
         desc = script.get("description", "")

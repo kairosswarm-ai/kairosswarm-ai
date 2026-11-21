@@ -93,17 +93,30 @@ Use calculators for every computed number. 'facts' only for stable published fig
     return plan
 
 
-SCENE_DOC = """Scene types (each scene = one beat, 3-6 seconds of narration):
-- {"type":"title","line1":"WHITE TEXT","line2":"ACCENT TEXT","accent":"red|green|yellow"}
-- {"type":"big_number","label":"SMALL LABEL","value":7723,"prefix":"$","suffix":"","decimals":0,"color":"red|green|white","note":"small source/context line or empty"}
-- {"type":"compare","title":"...","left":{"label":"...","color":"red","rows":[["Time in debt","~23 yrs"],["Interest","$7,723"]]},"right":{...same, "color":"green"},"footer":"..."}
-- {"type":"bars","title":"...","items":[{"label":"...","value":5000,"color":"white|red|green|yellow"}],"prefix":"$","note":"..."}
-- {"type":"timeline","label":"TIME IN DEBT","years":23,"start_year":2026}
-- {"type":"statement","lines":["BIG","WORDS"],"sub":"smaller line","accent_line":1,"accent":"green"}
-- {"type":"cta","line1":"...","line2":"..."}"""
+SCENE_DOC = """Scene types (each scene = one beat, 3-7 seconds of narration). Every scene except cta has an
+"image_prompt": a vivid, specific, cinematic photo description that SHOWS the beat (real places, objects,
+everyday US life, money, cars, homes, stores, cards). NO text, numbers, logos, brands or famous people in it.
+- {"type":"image","image_prompt":"...","motion":"zoom_in|zoom_out|pan_left|pan_right|pan_up",
+   "headline":"optional 2-5 WORD title on screen",
+   "overlay":{"value":8100,"prefix":"$","suffix":"","label":"IN INTEREST","color":"red|green|yellow","note":"optional source"}}
+   (use overlay only for the key number of that beat; headline and overlay are both optional)
+- {"type":"versus","title":"SAME $5,000","left":{"label":"MINIMUMS","color":"red","image_prompt":"...","rows":[["Years","~19"],["Interest","$8,100"]]},
+   "right":{"label":"$200/MONTH","color":"green","image_prompt":"...","rows":[["Years","~3"],["Interest","$1,750"]]},"image_prompt":"background..."}
+- {"type":"receipt","title":"YOUR CAR LOAN","image_prompt":"background...","items":[["Car price","$35,000"],["Interest","$9,212"]],"total":["YOU PAY","$44,212"]}
+- {"type":"list_item","number":3,"headline":"short headline","image_prompt":"...","overlay":{"value":1460,"prefix":"$"}}
+- {"type":"quiz","question":"...","options":["A","B","C"],"answer_index":1,"image_prompt":"background..."}
+- {"type":"cta","line1":"FOLLOW + LIKE","line2":"Comment your money question"}"""
+
+FORMATS = {
+    "story": "STORY: 5-7 'image' scenes that tell a tiny story with conflict (but... so...), 2-3 of them carry an overlay number; then cta.",
+    "versus": "VERSUS: hook 'image' scene, one 'versus' scene comparing two choices, 1-2 'image' scenes explaining why, then cta.",
+    "receipt": "RECEIPT: hook 'image' scene, a 'receipt' scene itemising what something really costs, 1-2 'image' scenes (why + the fix), then cta.",
+    "top3": "TOP 3 LIST: hook 'image' scene, three 'list_item' scenes counting down 3, 2, 1, then cta.",
+    "quiz": "QUIZ: first scene is a 'quiz' (the narration asks the viewer to guess and pauses), then 2-3 'image' scenes revealing and explaining, then cta.",
+}
 
 
-def write_script(plan, trend_tags=""):
+def write_script(plan, trend_tags="", fmt="story"):
     results = json.dumps(plan["calc_results"], indent=1)
     facts = json.dumps(plan.get("facts", []), indent=1)
     msg = f"""Write a YouTube Short (35-45 seconds spoken, 90-105 words of narration in total, count them) for "{CHANNEL}".
@@ -122,6 +135,10 @@ Hook formulas (first line must use one; confirm the title, open a gap, prove a p
 
 {SCENE_DOC}
 
+FORMAT FOR THIS VIDEO (follow it exactly): {FORMATS.get(fmt, FORMATS['story'])}
+Also give "visual_style": one line describing a consistent photographic look for all images of this video
+(lighting, colour grade, lens), e.g. "cinematic, warm golden hour, shallow depth of field, 35mm".
+
 Trending hashtags in this niche right now: {trend_tags}
 
 Structure: hook (first 3 s) -> setup -> the shocking number -> the twist/why -> the fix or takeaway -> cta.
@@ -139,6 +156,7 @@ Return JSON:
   "hashtags": ["3 topic hashtags without #, chosen from the trending hashtags below when relevant"],
   "description": "2-3 sentence description with the source names, then 3 relevant hashtags incl #shorts",
   "tags": ["8-12 search tags"],
+  "visual_style": "...",
   "scenes": [{{"type": "...", ..., "voice": "...", "caption": "..."}}]}}
 The first scene's voice must be the best of your hooks."""
     return chat([{"role": "user", "content": msg}], temperature=0.8, max_tokens=5000)
@@ -215,13 +233,13 @@ Problems:
 {json.dumps(problems, indent=1)}
 
 Current script JSON:
-{json.dumps({k: script[k] for k in ('hooks', 'titles', 'emojis', 'hashtags', 'description', 'tags', 'scenes') if k in script}, indent=1)}
+{json.dumps({k: script[k] for k in ('hooks', 'titles', 'emojis', 'hashtags', 'description', 'tags', 'visual_style', 'scenes') if k in script}, indent=1)}
 
-Return the full corrected JSON with keys hooks, titles, emojis, hashtags, description, tags, scenes."""
+Return the full corrected JSON with keys hooks, titles, emojis, hashtags, description, tags, visual_style, scenes."""
     return chat([{"role": "user", "content": msg}], temperature=0.4, max_tokens=5000)
 
 
-def generate(history, seed=None, max_topics=3, max_revisions=2, trends=None, trend_tags="", avoid=()):
+def generate(history, seed=None, max_topics=3, max_revisions=2, trends=None, trend_tags="", avoid=(), fmt="story"):
     rng = random.Random(seed)
     last_err = None
     for _ in range(max_topics):
@@ -229,7 +247,7 @@ def generate(history, seed=None, max_topics=3, max_revisions=2, trends=None, tre
         if any("error" in c["result"] for c in plan["calc_results"]):
             last_err = f"calculator error: {plan['calc_results']}"
             continue
-        script = write_script(plan, trend_tags)
+        script = write_script(plan, trend_tags, fmt)
         for rev in range(max_revisions + 1):
             if not script.get("scenes"):
                 last_err = "empty script"; break
@@ -244,6 +262,6 @@ def generate(history, seed=None, max_topics=3, max_revisions=2, trends=None, tre
             if rev < max_revisions:
                 old = script
                 script = revise(plan, script, check.get("problems", []))
-                for k in ("emojis", "hashtags"):
+                for k in ("emojis", "hashtags", "visual_style"):
                     script.setdefault(k, old.get(k))
     raise RuntimeError(f"could not produce a verified script: {last_err}")
