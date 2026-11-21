@@ -43,6 +43,18 @@ def center(d, y, txt, path, size, fill, maxw=W - 120):
     d.text(((W - w) / 2, y), txt, font=f, fill=fill)
 
 
+def center_wrap(d, y, txt, path, size, fill, maxw=W - 160, max_lines=3, min_size=34):
+    """Wrap long small text onto up to max_lines lines instead of shrinking it to nothing."""
+    txt = str(txt)
+    while True:
+        f = F(path, size); lines = wrap(d, txt, f, maxw)
+        if len(lines) <= max_lines or size <= min_size: break
+        size -= 4
+    for ln in lines[:max_lines]:
+        w = d.textlength(ln, font=f); d.text(((W - w) / 2, y), ln, font=f, fill=fill); y += int(size * 1.3)
+    return y
+
+
 def wrap(d, txt, font, maxw):
     words, lines, cur = str(txt).split(), [], ""
     for wd in words:
@@ -97,7 +109,7 @@ def s_big_number(d, s, p, t):
     try: shown = float(v) * ease(p * 1.6)
     except Exception: shown = v
     center(d, 470, fmt(shown, s.get("prefix", ""), s.get("suffix", ""), s.get("decimals", 0)), FB, 240, col(s.get("color", "white")))
-    if s.get("note"): center(d, 820, s["note"], FM, 40, MUTED)
+    if s.get("note"): center_wrap(d, 800, s["note"], FM, 42, MUTED)
 
 
 def s_compare(d, s, p, t):
@@ -113,7 +125,7 @@ def s_compare(d, s, p, t):
             d.text((160, y + 140 + j * 90), str(k), font=F(FM, 40), fill=MUTED)
             vf = fit(d, str(v), FB, 60, 330)
             d.text((930 - d.textlength(str(v), font=vf), y + 128 + j * 90), str(v), font=vf, fill=FG)
-    if s.get("footer") and p > 0.5: center(d, 1310, s["footer"], FB, 58, COL["green"])
+    if s.get("footer") and p > 0.5: center_wrap(d, 1290, s["footer"], FB, 54, COL["green"], max_lines=2)
 
 
 def s_bars(d, s, p, t):
@@ -135,7 +147,7 @@ def s_bars(d, s, p, t):
             vt = fmt(it.get("value", 0), s.get("prefix", ""), s.get("suffix", ""))
             vf = fit(d, vt, FB, 44, bw + gap - 10)
             d.text((x + bw / 2 - d.textlength(vt, font=vf) / 2, base - h - 60), vt, font=vf, fill=FG)
-    if s.get("note"): center(d, 1290, s["note"], FM, 34, MUTED)
+    if s.get("note"): center_wrap(d, 1270, s["note"], FM, 38, MUTED, max_lines=2)
 
 
 def s_timeline(d, s, p, t):
@@ -158,15 +170,16 @@ def s_statement(d, s, p, t):
     for i, ln in enumerate(lines):
         center(d, y, ln, FB, 170 if len(lines) <= 2 else 130, ac if i == acc else FG)
         y += 200 if len(lines) <= 2 else 160
-    if s.get("sub"): center(d, y + 30, s["sub"], FS, 60, YEL)
+    if s.get("sub"): center_wrap(d, y + 30, s["sub"], FS, 58, YEL)
 
 
 def s_cta(d, s, p, t):
-    center(d, 600, s.get("line1", ""), FB, 110, FG)
-    center(d, 740, s.get("line2", ""), FB, 110, COL["green"])
+    yy = center_wrap(d, 560, s.get("line1", ""), FB, 110, FG, max_lines=2, min_size=70)
+    yy = center_wrap(d, yy + 10, s.get("line2", ""), FB, 90, COL["green"], max_lines=2, min_size=50)
+    cy = max(980, yy + 120)
     r = 70 + 8 * math.sin(t * 6)
-    d.ellipse((W / 2 - r, 980 - r, W / 2 + r, 980 + r), fill=COL["red"])
-    center(d, 940, "+", FB, 80, FG)
+    d.ellipse((W / 2 - r, cy - r, W / 2 + r, cy + r), fill=COL["red"])
+    center(d, cy - 40, "+", FB, 80, FG)
 
 
 PAINT = {"title": s_title, "big_number": s_big_number, "compare": s_compare, "bars": s_bars,
