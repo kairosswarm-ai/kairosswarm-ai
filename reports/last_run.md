@@ -1,4 +1,4 @@
-# Last run (2026-11-21 17:50 UTC)
+# Last run (2026-11-21 17:54 UTC)
 
 ## Setup check
 - secret `OPENROUTER_API_KEY`: OK
@@ -16,10 +16,10 @@
   )
 
 ## Short
-- topic: You have family health insurance, but your own paycheck still pays about $6,296 a year just for the premium, before any deductible. Over a 40-year career that adds up to roughly a quarter-million dollars. (money)
-- inspired by trend: The insurance-frustration theme ('When You Have Insurance but Still Pay', 'Joe's insurance won't cover $12 medicine', 'Power of Insurance'). Several of these beat their channels by 20x or more. We use the same 'insurance but you still pay' tension, but with a provable annual and career-total number instead of a comedy skit. The hook is a Question/Reveal: 'Insurance is supposed to protect you, so why are you already paying $525 a month?'
-- title: The $252,000 Health Insurance Bill 🏥💸 #shorts #ytshorts #viral (title score 100, hook score 53)
-- format: quiz, look #4, images: {'ai': 4, 'fallback': 0, 'cache': 0}
-- length: 46.5s, built in 202s
+- topic: Your first mortgage payment is mostly the bank's paycheck: on a $400,000 loan at 6.5%, about 86 cents of every dollar in month 1 is interest, and over 30 years the bank collects more in interest than the amount it lent. (business)
+- inspired by trend: The mortgage theme ('Jay-Z and Beyoncé $536K monthly mortgage payments', 'Paying off your house is a scam/mistake'). Viewers clearly click on shocking monthly mortgage numbers and on 'what the bank is really doing'. We take a different angle from the hook: the bank's unit economics of a normal mortgage, shown as the split of one payment.
+- title: $510K Interest on a $400K Mortgage 🏠💸 #shorts #ytshorts #viral (title score 100, hook score 52)
+- format: top3, look #10, images: {'ai': 4, 'fallback': 0, 'cache': 0}
+- length: 33.8s, built in 140s
 - fact check: (revisions 1) passed
-- not uploaded (dry run): short-20261121-174814.mp4
+- not uploaded (dry run): short-20261121-175318.mp4
