@@ -1,16 +1,16 @@
-# Last run (2026-11-21 14:20 UTC)
+# Last run (2026-11-21 14:24 UTC)
 
-## FAILED: could not produce a verified script: fact check failed: ["Scene 1 is misleading. The 73% comes from dividing membership fee revenue ($4.58B) by net income ($6.29B). Fees are revenue, not income, so they are not 73% of net income. Costco's costs and taxes apply to the whole business, and the fee revenue has no separate profit figure. The claim 'About 73% of Costco's net income came from membership fees' is therefore false as worded. The note on the bars scene does not fix it.", "Scene 3 is misleading. '$1.7B net income left after subtracting fees' (6,292 − 4,580 = 1,712) subtracts pre-cost revenue from after-tax profit. The result has no financial meaning and implies the non-membership business earns only $1.7B. The 'rough comparison' note does not cure the false implication.", "Several titles repeat the false 73% claim: 'Costco's Real Product Is Your $60 Card (73% of Profit)', '73% of Costco's Net Income Isn't From Selling Stuff', 'Why Costco Barely Profits From Your Cart (73% Fees)', 'Costco's Membership Fee: 73% of Net Income', and 'Is Costco Really a Card Business? 73% Says Yes'. 'Barely Profits From Your Cart' is also unsupported.", "'The $60 Card That Powers Costco's $6.29B Profit' implies the $60 card alone drives the profit, which is not supported. The fee is also now $65, so the title is dated.", "Scene 4 is an unsupported causal claim. 'Low prices keep you coming, the card keeps you renewing' has no cited data, such as a renewal rate.", 'Scene 5 has a minor issue. The 20-year $1,200 figure (60 × 20) is arithmetically correct, but the fee has since risen to $65, so the scenario is hypothetical and partly outdated.']
-```
-Traceback (most recent call last):
-  File "/home/runner/work/kairosswarm-ai/kairosswarm-ai/src/main.py", line 108, in main
-    lines = ["## Setup check"] + lines + ["", "## Short"] + make_short("--upload" in sys.argv)
-                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/kairosswarm-ai/kairosswarm-ai/src/main.py", line 60, in make_short
-    script = script_gen.generate(hist)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/kairosswarm-ai/kairosswarm-ai/src/script_gen.py", line 199, in generate
-    raise RuntimeError(f"could not produce a verified script: {last_err}")
-RuntimeError: could not produce a verified script: fact check failed: ["Scene 1 is misleading. The 73% comes from dividing membership fee revenue ($4.58B) by net income ($6.29B). Fees are revenue, not income, so they are not 73% of net income. Costco's costs and taxes apply to the whole business, and the fee revenue has no separate profit figure. The claim 'About 73% of Costco's net income came from membership fees' is therefore false as worded. The note on the bars scene does not fix it.", "Scene 3 is misleading. '$1.7B net income left after subtracting fees' (6,292 − 4,580 = 1,712) subtracts pre-cost revenue from after-tax profit. The result has no financial meaning and implies the non-membership business earns only $1.7B. The 'rough comparison' note does not cure the false implication.", "Several titles repeat the false 73% claim: 'Costco's Real Product Is Your $60 Card (73% of Profit)', '73% of Costco's Net Income Isn't From Selling Stuff', 'Why Costco Barely Profits From Your Cart (73% Fees)', 'Costco's Membership Fee: 73% of Net Income', and 'Is Costco Really a Card Business? 73% Says Yes'. 'Barely Profits From Your Cart' is also unsupported.", "'The $60 Card That Powers Costco's $6.29B Profit' implies the $60 card alone drives the profit, which is not supported. The fee is also now $65, so the title is dated.", "Scene 4 is an unsupported causal claim. 'Low prices keep you coming, the card keeps you renewing' has no cited data, such as a renewal rate.", 'Scene 5 has a minor issue. The 20-year $1,200 figure (60 × 20) is arithmetically correct, but the fee has since risen to $65, so the scenario is hypothetical and partly outdated.']
+## Setup check
+- secret `OPENROUTER_API_KEY`: OK
+- secret `YT_CLIENT_ID`: OK
+- secret `YT_CLIENT_SECRET`: OK
+- secret `YT_REFRESH_TOKEN`: OK
+- OpenRouter (anthropic/claude-sonnet-5.5): OK
+- YouTube auth: OK, channel **Compound Shock** (UCGUCJClqgxEoWc1xwqG4XUQ), subscribers 0
 
-```
+## Short
+- topic: The $5,000 credit card balance that takes decades to pay off if you only make minimum payments (money)
+- title: How $5,000 Turns Into 19 Years of Debt (title score 100, hook score 52)
+- length: 49.8s, built in 177s
+- fact check: (revisions 2) passed
+- not uploaded (dry run): short-20261121-1424.mp4
