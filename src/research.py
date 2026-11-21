@@ -20,6 +20,20 @@ QUERIES = [
 ]
 
 
+MONEY_WORDS = re.compile(r"\$|money|rich|poor|credit|debt|tax|loan|sav(e|ing)|invest|income|salary|price|cost|"
+                         r"business|compan|billion|million|budget|bank|interest|mortgage|401k|ira|stock|dollar|"
+                         r"cash|pay|broke|wealth|afford|rent|insurance|retire|financ|econom|inflation|profit", re.I)
+SKIP_CATEGORIES = {"1", "10", "20"}  # film/animation, music, gaming
+
+
+def is_english(text):
+    letters = [c for c in text if c.isalpha()]
+    if not letters:
+        return False
+    non_latin = sum(1 for c in letters if ord(c) > 0x024F)
+    return non_latin / len(letters) < 0.1
+
+
 def classify(title):
     best = (0, "Unclassified")
     for f in HOOKS:
@@ -60,7 +74,10 @@ def trending(tok, n_queries=5, days=7, seed=None):
     for v in vids:
         sn, st = v["snippet"], v.get("statistics", {})
         views = int(st.get("viewCount") or 0)
-        if views < 20000:
+        lang = (sn.get("defaultAudioLanguage") or sn.get("defaultLanguage") or "en").lower()
+        text_all = f"{sn.get('title', '')} {sn.get('description', '')[:300]}"
+        if (views < 20000 or not lang.startswith("en") or not is_english(sn["title"])
+                or sn.get("categoryId") in SKIP_CATEGORIES or not MONEY_WORDS.search(text_all)):
             continue
         s = max(subs.get(sn["channelId"], 0), 1000)
         rows.append({"title": sn["title"], "channel": sn["channelTitle"], "views": views,
