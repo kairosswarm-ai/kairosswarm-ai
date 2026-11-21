@@ -269,25 +269,25 @@ def s_list_item(frame, d, s, p, t, imgs, acc):
 
 
 def s_quiz(frame, d, s, p, t, imgs, acc):
-    ctext(d, 260, "GUESS", FB, 70, BRAND, sw=8)
-    q = clean(s.get("question", ""))
-    f = F(FB, 70); y = 360
-    for ln in wrap(d, q, f, W - 140)[:3]:
-        ff = fit(d, ln, FB, 70, W - 140); stroke_text(d, ((W - text_w(d, ln, ff)) / 2, y), ln, ff, WHITE, 9); y += 84
-    opts = (s.get("options") or [])[:3]; ans = int(s.get("answer_index", 0) or 0)
     reveal = p > 0.62
+    left = max(0, 3 - int(p / 0.62 * 3))
+    ctext(d, 250, "GUESS" + ("" if reveal else f"  {left or 1}"), FB, 70, BRAND, sw=8)
+    q = clean(s.get("question", ""))
+    size = 66
+    while size > 44 and len(wrap(d, q, F(FB, size), W - 140)) > 4: size -= 4
+    f = F(FB, size); y = 350
+    for ln in wrap(d, q, f, W - 140)[:4]:
+        ff = fit(d, ln, FB, size, W - 140); stroke_text(d, ((W - text_w(d, ln, ff)) / 2, y), ln, ff, WHITE, 9); y += int(size * 1.2)
+    opts = (s.get("options") or [])[:3]; ans = int(s.get("answer_index", 0) or 0)
     for i, o in enumerate(opts):
         e = ease(p * 4 - i * 0.4)
         if e <= 0: continue
-        by = y + 40 + i * 150; bx0, bx1 = 140, W - 140
+        by = y + 30 + i * 140; bx0, bx1 = 140, W - 140
         good = reveal and i == ans; bad = reveal and i != ans
         fill = COLORS["green"] if good else ((60, 60, 70) if bad else (25, 25, 32))
         d.rounded_rectangle((bx0, by, bx1, by + 120), 28, fill=fill, outline=BRAND if not reveal else fill, width=5)
         lab = f"{'ABC'[i]}   {clean(o)}"
         d.text((bx0 + 40, by + 28), lab, font=fit(d, lab, FB, 58, bx1 - bx0 - 80), fill=BLACK if good else WHITE)
-    if not reveal:
-        left = max(0, 3 - int(p / 0.62 * 3))
-        ctext(d, y + 520, str(left if left else "!"), FB, 120, BRAND, sw=10)
 
 
 def s_cta(frame, d, s, p, t, imgs, acc, logo=None):
