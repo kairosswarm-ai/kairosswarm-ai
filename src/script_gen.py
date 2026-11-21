@@ -178,7 +178,14 @@ Return JSON:
   "visual_style": "...",
   "scenes": [{{"type": "...", ..., "voice": "...", "caption": "..."}}]}}
 The first scene's voice must be the best of your hooks."""
-    return chat([{"role": "user", "content": msg}], temperature=0.8, max_tokens=5000)
+    for _ in range(2):
+        try:
+            out = chat([{"role": "user", "content": msg}], temperature=0.8, max_tokens=9000)
+        except Exception:
+            continue
+        if out.get("scenes"):
+            return out
+    return {}
 
 
 def verify(plan, script):
@@ -232,7 +239,7 @@ Keep the same scenes, order, types, visuals and every number exactly as they are
 Only rewrite each scene's "voice" (and set "caption" to match). Keep the first line a strong hook.
 Scenes: {json.dumps(script['scenes'], indent=1)}
 Return JSON: {{"scenes": [...same scenes with shorter voice/caption...]}}"""
-    out = chat([{"role": "user", "content": msg}], temperature=0.3, max_tokens=4000)
+    out = chat([{"role": "user", "content": msg}], temperature=0.3, max_tokens=7000)
     new = out.get("scenes") or []
     if len(new) == len(script["scenes"]) and all(str(n.get("voice", "")).strip() for n in new):
         for old, n in zip(script["scenes"], new):  # keep visuals, take only the new words
@@ -282,7 +289,18 @@ Current script JSON:
 {json.dumps({k: script[k] for k in ('hooks', 'titles', 'emojis', 'hashtags', 'description', 'tags', 'visual_style', 'scenes') if k in script}, indent=1)}
 
 Return the full corrected JSON with keys hooks, titles, emojis, hashtags, description, tags, visual_style, scenes."""
-    return chat([{"role": "user", "content": msg}], temperature=0.4, max_tokens=5000)
+    try:
+        new = chat([{"role": "user", "content": msg}], temperature=0.4, max_tokens=9000)
+    except Exception:
+        return script
+    if not isinstance(new, dict) or not new.get("scenes"):
+        for v in (new or {}).values() if isinstance(new, dict) else []:
+            if isinstance(v, dict) and v.get("scenes"):
+                return v
+        return script
+    for k in ("hooks", "titles", "description", "tags"):
+        new.setdefault(k, script.get(k))
+    return new
 
 
 def generate(history, seed=None, max_topics=4, max_revisions=2, trends=None, trend_tags="", avoid=(), fmt="story",
