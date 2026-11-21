@@ -184,6 +184,11 @@ def headline(d, t, p):
 
 
 def s_image(frame, d, s, p, t, imgs, acc):
+    if s.get("overlay") and s.get("headline"):
+        hl_ = clean(s["headline"]).upper()
+        ctext(d, 330, hl_, FB, int(76 * max(0.4, back(min(1, p * 4)))), WHITE, sw=9)
+        overlay_number(d, s.get("overlay"), p, acc)
+        return
     headline(d, s.get("headline", ""), p)
     overlay_number(d, s.get("overlay"), p, acc)
 
@@ -236,13 +241,15 @@ def s_receipt(frame, d, s, p, t, imgs, acc):
     y = y0 + 170
     for i, it in enumerate(items[:max(0, shown - 1)]):
         a, b = (list(it) + ["", ""])[:2]
-        d.text((x0 + 40, y), clean(a), font=fit(d, clean(a), FS, 44, 430), fill=(60, 60, 60))
-        vf = F(FB, 48); d.text((x1 - 40 - text_w(d, clean(b), vf), y - 2), clean(b), font=vf, fill=BLACK); y += 110
+        vf = fit(d, clean(b), FB, 48, 300); vw = text_w(d, clean(b), vf)
+        d.text((x0 + 40, y), clean(a), font=fit(d, clean(a), FS, 44, x1 - x0 - 120 - vw), fill=(60, 60, 60))
+        d.text((x1 - 40 - vw, y - 2), clean(b), font=vf, fill=BLACK); y += 110
     if shown >= n and s.get("total"):
         a, b = (list(s["total"]) + ["", ""])[:2]
         d.line((x0 + 40, y - 20, x1 - 40, y - 20), fill=BLACK, width=4)
-        d.text((x0 + 40, y), clean(a).upper(), font=F(FB, 52), fill=BLACK)
-        vf = F(FB, 64); d.text((x1 - 40 - text_w(d, clean(b), vf), y - 8), clean(b), font=vf, fill=COLORS["red"])
+        vf = fit(d, clean(b), FB, 64, 340); vw = text_w(d, clean(b), vf)
+        d.text((x0 + 40, y), clean(a).upper(), font=fit(d, clean(a).upper(), FB, 52, x1 - x0 - 120 - vw), fill=BLACK)
+        d.text((x1 - 40 - vw, y - 8), clean(b), font=vf, fill=COLORS["red"])
 
 
 def s_list_item(frame, d, s, p, t, imgs, acc):

@@ -141,6 +141,7 @@ Also give "visual_style": one line describing a consistent photographic look for
 
 Trending hashtags in this niche right now: {trend_tags}
 
+Length and pacing: 6-8 scenes, each scene 1-2 short sentences (max 24 words), so the picture changes every 4-6 seconds.
 Structure: hook (first 3 s) -> setup -> the shocking number -> the twist/why -> the fix or takeaway -> cta.
 No channel intro. One idea. The LAST scene is type "cta" and must ask for all three, in ~15 spoken words:
 follow, like, and comment a money question that we will answer in a future video
@@ -222,6 +223,33 @@ Return JSON: {{"scenes": [...same scenes with shorter voice/caption...]}}"""
     return script
 
 
+def structure_problems(script, fmt):
+    sc = script.get("scenes") or []
+    pr = []
+    if not 5 <= len(sc) <= 9:
+        pr.append(f"The video must have 5 to 9 scenes (it has {len(sc)}). Split long beats into separate scenes.")
+    if not sc or sc[-1].get("type") != "cta":
+        pr.append("The last scene must be the cta scene (follow + like + comment your money question).")
+    for i, x in enumerate(sc):
+        n = len(str(x.get("voice", "")).split())
+        if n > 24:
+            pr.append(f"Scene {i + 1} narration has {n} words; max 24 per scene. Split it into two scenes.")
+        if len(str(x.get("caption", "")).split()) > 14:
+            pr.append(f"Scene {i + 1} caption is too long; max 14 words.")
+        if x.get("type") == "receipt":
+            for it in x.get("items") or []:
+                if len(str(it[0])) > 20 or len(str(it[1] if len(it) > 1 else "")) > 9:
+                    pr.append(f"Receipt rows must be short: label <= 20 chars, amount <= 9 chars like $9,212 (bad: {it}).")
+            tot = x.get("total") or ["", ""]
+            if len(str(tot[0])) > 10 or len(str(tot[1] if len(tot) > 1 else "")) > 9:
+                pr.append("Receipt total must be short: label <= 10 chars, amount <= 9 chars.")
+    kinds = [x.get("type") for x in sc]
+    need = {"versus": "versus", "receipt": "receipt", "top3": "list_item", "quiz": "quiz"}.get(fmt)
+    if need and need not in kinds:
+        pr.append(f"This video's format requires a '{need}' scene.")
+    return pr
+
+
 def revise(plan, script, problems):
     msg = f"""A fact checker rejected this YouTube Short. Fix EVERY problem below. If a claim cannot be
 made accurate, remove it (and any title using it) rather than rewording it. Keep the same JSON shape.
@@ -251,6 +279,15 @@ def generate(history, seed=None, max_topics=3, max_revisions=2, trends=None, tre
         for rev in range(max_revisions + 1):
             if not script.get("scenes"):
                 last_err = "empty script"; break
+            sp = structure_problems(script, fmt)
+            if sp:
+                last_err = f"structure: {sp}"
+                if rev < max_revisions:
+                    old = script
+                    script = revise(plan, script, sp)
+                    for k in ("emojis", "hashtags", "visual_style"):
+                        script.setdefault(k, old.get(k))
+                continue
             check = verify(plan, script)
             if check.get("ok"):
                 script = best_hook_and_title(script)
