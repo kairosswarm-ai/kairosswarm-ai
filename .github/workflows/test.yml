@@ -1,0 +1,73 @@
+name: test
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "check = only verify keys | short = make 1 Short (no upload) | upload = make 1 Short and upload"
+        default: check
+        type: choice
+        options: [check, short, upload]
+  push:
+    paths: [".github/run-test"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: yt-pipeline
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Cache Kokoro model
+        uses: actions/cache@v4
+        with:
+          path: models
+          key: kokoro-v1.0
+      - name: Download Kokoro model
+        run: |
+          mkdir -p models
+          [ -f models/kokoro-v1.0.onnx ] || curl -sL -o models/kokoro-v1.0.onnx https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.onnx
+          [ -f models/voices-v1.0.bin ] || curl -sL -o models/voices-v1.0.bin https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin
+      - run: pip install -r requirements.txt
+      - name: Run
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          KOKORO_DIR: models
+        run: |
+          MODE="${{ github.event.inputs.mode }}"
+          [ -z "$MODE" ] && MODE="$(cat .github/run-test 2>/dev/null | tr -d '[:space:]')"
+          [ -z "$MODE" ] && MODE=check
+          case "$MODE" in
+            check)  python -m src.main check ;;
+            short)  python -m src.main short ;;
+            upload) python -m src.main short --upload ;;
+          esac
+      - name: Save video
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: video
+          path: out/
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Commit report
+        if: always()
+        run: |
+          git config user.name "pipeline-bot"
+          git config user.email "pipeline-bot@users.noreply.github.com"
+          git add reports/ data/history.json || true
+          git diff --cached --quiet || (git commit -m "report: test run" && git pull --rebase -q && git push -q)
