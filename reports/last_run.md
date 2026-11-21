@@ -1,4 +1,4 @@
-# Last run (2026-11-21 15:31 UTC)
+# Last run (2026-11-21 17:09 UTC)
 
 ## Setup check
 - secret `OPENROUTER_API_KEY`: OK
@@ -9,8 +9,9 @@
 - YouTube auth: OK, channel **Compound Shock** (UCGUCJClqgxEoWc1xwqG4XUQ), subscribers 0
 
 ## Short
-- topic: The 'lower monthly payment' car loan trap: how stretching a $35,000 loan from 48 to 84 months changes the interest you pay (money)
-- title: 48 vs 84 Month Car Loan: The Real Cost (title score 100, hook score 67)
-- length: 48.6s, built in 149s
+- topic: Same $300 a month, same 7% return, but the person who starts at 25 ends up with far more than the person who starts at 35. The extra 10 years of contributions only explain a small part of the gap. (money)
+- inspired by trend: The Comparison / 'Rich vs Poor' pattern (e.g. 'Rich to Poor', 'Rich Families Protect Wealth', 'Rich vs Poor wife'). Here it becomes two people with identical pay and identical monthly savings, and the only difference is the start date. Also rides the 'how money actually works' explainer angle.
+- title: Start at 25 vs 35: The Double Gap 📈😳 #shorts #ytshorts #viral (title score 100, hook score 53)
+- length: 27.9s, built in 120s
 - fact check: (revisions 0) passed
-- uploaded: https://youtube.com/shorts/M4eWHgTcWb8 (privacy: public)
+- not uploaded (dry run): short-20261121-1709.mp4
