@@ -1,4 +1,4 @@
-# Last run (2026-11-21 17:44 UTC)
+# Last run (2026-11-21 17:50 UTC)
 
 ## Setup check
 - secret `OPENROUTER_API_KEY`: OK
@@ -16,10 +16,10 @@
   )
 
 ## Short
-- topic: A $10,000 early 401(k) withdrawal at age 30: the 10% penalty is only the visible cost. The bigger cost is what that money would have grown into by 65. (money)
-- inspired by trend: 'The Statistic' hook pattern (a stark dollar figure up front, as in the '$7 in there / $120,000' title) combined with the high-performing credit card/debt explainer theme. It is a fresh number and a different money trap from the covered topics, with no credit card or car loan content.
-- title: The $1,000 Penalty Is the Cheap Part 💸😳 #shorts #ytshorts #viral (title score 100, hook score 56)
-- format: receipt, look #3, images: {'ai': 2, 'fallback': 0, 'cache': 0}
-- length: 40.6s, built in 284s
+- topic: You have family health insurance, but your own paycheck still pays about $6,296 a year just for the premium, before any deductible. Over a 40-year career that adds up to roughly a quarter-million dollars. (money)
+- inspired by trend: The insurance-frustration theme ('When You Have Insurance but Still Pay', 'Joe's insurance won't cover $12 medicine', 'Power of Insurance'). Several of these beat their channels by 20x or more. We use the same 'insurance but you still pay' tension, but with a provable annual and career-total number instead of a comedy skit. The hook is a Question/Reveal: 'Insurance is supposed to protect you, so why are you already paying $525 a month?'
+- title: The $252,000 Health Insurance Bill 🏥💸 #shorts #ytshorts #viral (title score 100, hook score 53)
+- format: quiz, look #4, images: {'ai': 4, 'fallback': 0, 'cache': 0}
+- length: 46.5s, built in 202s
 - fact check: (revisions 1) passed
-- not uploaded (dry run): short-20261121-174226.mp4
+- not uploaded (dry run): short-20261121-174814.mp4
