@@ -1,0 +1,31 @@
+name: channel-setup
+on:
+  workflow_dispatch:
+  push:
+    paths: [".github/run-channel-setup"]
+
+permissions:
+  contents: write
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: Apply channel branding
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: python -m src.channel_setup
+      - name: Commit report
+        if: always()
+        run: |
+          git config user.name "pipeline-bot"
+          git config user.email "pipeline-bot@users.noreply.github.com"
+          git add reports/ || true
+          git diff --cached --quiet || (git commit -m "report: channel setup" && git pull --rebase -q && git push -q)
