@@ -1,4 +1,4 @@
-# Last run (2026-11-21 17:09 UTC)
+# Last run (2026-11-21 17:14 UTC)
 
 ## Setup check
 - secret `OPENROUTER_API_KEY`: OK
@@ -9,9 +9,9 @@
 - YouTube auth: OK, channel **Compound Shock** (UCGUCJClqgxEoWc1xwqG4XUQ), subscribers 0
 
 ## Short
-- topic: Same $300 a month, same 7% return, but the person who starts at 25 ends up with far more than the person who starts at 35. The extra 10 years of contributions only explain a small part of the gap. (money)
-- inspired by trend: The Comparison / 'Rich vs Poor' pattern (e.g. 'Rich to Poor', 'Rich Families Protect Wealth', 'Rich vs Poor wife'). Here it becomes two people with identical pay and identical monthly savings, and the only difference is the start date. Also rides the 'how money actually works' explainer angle.
-- title: Start at 25 vs 35: The Double Gap 📈😳 #shorts #ytshorts #viral (title score 100, hook score 53)
-- length: 27.9s, built in 120s
+- topic: Paying an extra $200 a month on a $350,000 30-year mortgage at 6.5% APR: how many years and how many dollars of interest it removes (money)
+- inspired by trend: The 'Her Friends Said Paying Off Her House Was a MISTAKE' pattern (24x its channel): the debate over paying off a house early. We turn it into a neutral, provable math reveal rather than a story. It also draws on the 'everyday money mistakes' theme from the banker list (9.7x).
+- title: $200 Extra Cuts 6 Years Off 🏠😳 #shorts #ytshorts #viral (title score 100, hook score 53)
+- length: 44.4s, built in 182s
 - fact check: (revisions 0) passed
-- not uploaded (dry run): short-20261121-1709.mp4
+- not uploaded (dry run): short-20261121-1714.mp4

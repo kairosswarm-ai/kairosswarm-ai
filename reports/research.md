@@ -1,23 +1,23 @@
-# Market research (2026-11-21 17:07 UTC)
+# Market research (2026-11-21 17:11 UTC)
 
-Searched: how companies make money, credit card, taxes, student loans, rich vs poor
+Searched: taxes, saving money, compound interest, costco, mortgage
 
 | x channel | views | formula | title |
 |---|---|---|---|
-| 279.0 | 926,127 | Unclassified | [Mummy Ki ₹2000 Wali Cream Laga Li! 😂 Glow Tax#shorts #funny](https://youtube.com/shorts/sl7n3knix_U) |
-| 259.2 | 2,747,225 | The List | [3 exclusive cards can make you rich.#shorts](https://youtube.com/shorts/N614CCW8FOA) |
-| 170.6 | 170,594 | Unclassified | [BBQ or BB Live? He Was Just Trying to Make Money #shorts](https://youtube.com/shorts/hd2tCs8w8VA) |
-| 156.5 | 2,644,788 | Unclassified | [Rich to Poor 😂💸 / Can You Get It Right? #shorts #games](https://youtube.com/shorts/SXpOkBlPRkw) |
-| 152.6 | 152,646 | The Question | [How Rich Families Protect Their Wealth! 🤯 #shorts #RichVsPoor](https://youtube.com/shorts/gnjNS5JdWXo) |
-| 138.3 | 932,314 | Unclassified | [Poor Sonic Becomes RICH! Amy & Shadow Are SHOCKED! 😱💎 #luckygameplay #sonic #sonicthehedgehog #games](https://youtube.com/shorts/37Fy064K2PQ) |
-| 94.5 | 153,091 | Unclassified | [食料品の消費税0%、標準税率12%なら税収はほぼ同じ 岡本代表の問題提起 #shorts](https://youtube.com/shorts/wyPnHyOuiLU) |
-| 74.7 | 209,094 | The Comparison | [ধনী বউ VS গরিব বউ 😱 গরিব বউকে অপমান! শেষ রান্নায় কে জিতল? 🍚 #shorts#ai](https://youtube.com/shorts/ehz-O21WbRU) |
-| 66.5 | 485,398 | Unclassified | [You finally realize how taxes actually work 😅#POV #Comedy #Cartoon #Animation #shorts](https://youtube.com/shorts/w_tpjHF3GtU) |
-| 59.5 | 128,029 | Unclassified | [減税じゃなく給付金なのは中抜きできるから？](https://youtube.com/shorts/9pD7-Bu358c) |
-| 58.4 | 125,556 | Unclassified | [米経済学者「消費増税はいらない」→3か月後に10%へ増税💢](https://youtube.com/shorts/fc6bhF1x5Mo) |
-| 55.9 | 587,378 | Unclassified | ["गरीब बहन के पति का हुनर देखकर अमीर बहन के उड़े होश! 😱🔥" #shorts #emotionalstory #familydrama](https://youtube.com/shorts/oXngNhbtgxA) |
-| 49.0 | 48,971 | The Comparison | [🇮🇳 vs 🇺🇸 Rich Mindset vs Struggle Mindset! 🤯 #shorts #khansir](https://youtube.com/shorts/ghNcyKi4sA8) |
-| 44.2 | 124,580 | The Comparison | [உங்க அம்மா பாத்திரம் தேய்ச்சவ தானே 💔 ஏழை மருமக vs பணக்கார மருமக #shorts #viral](https://youtube.com/shorts/36JL4fbauBw) |
-| 32.6 | 32,649 | The Question | [Why Is She Swiping A Credit Card In The Water! #shorts](https://youtube.com/shorts/LVX4yC8FOYI) |
+| 567.5 | 567,544 | Unclassified | [Tree ring light: Christmas moms RUN to Costco 🎄](https://youtube.com/shorts/KFauiDHBqgQ) |
+| 66.4 | 485,617 | Unclassified | [You finally realize how taxes actually work 😅#POV #Comedy #Cartoon #Animation #shorts](https://youtube.com/shorts/w_tpjHF3GtU) |
+| 51.2 | 51,241 | The Mistake | [Omega Tried To Stop Costco Selling Watches Chea](https://youtube.com/shorts/pGIeWy74SOk) |
+| 41.4 | 146,401 | Unclassified | [Just a quick Costco run.](https://youtube.com/shorts/20soli-ZbZA) |
+| 25.3 | 25,254 | Unclassified | [Four friends dropped their coffee and filled a Costco cart with this 😱🎄](https://youtube.com/shorts/FJjPfRQMuOQ) |
+| 25.0 | 25,036 | Unclassified | [She froze at Costco when she saw this gift tower 😱🎁](https://youtube.com/shorts/wzIcU3NTSfE) |
+| 24.1 | 24,128 | Unclassified | [Her Friends Said Paying Off Her House Was a MISTAKE 😳🏡](https://youtube.com/shorts/GHUR0Euz8Rk) |
+| 19.0 | 31,578 | Unclassified | [LED helmet Harley dad found at Costco #shorts](https://youtube.com/shorts/aC87jWupZx8) |
+| 16.4 | 34,855 | Unclassified | [Scary Halloween Props in Costco New Zealand #halloween #trending #viral #shorts](https://youtube.com/shorts/HiqP3JQMGFU) |
+| 15.1 | 62,675 | The List | [5 Costco Skin Supplements Worth Knowing About #Shorts](https://youtube.com/shorts/Ilf4k0N8_P8) |
+| 9.7 | 255,586 | The List | [8 Mistakes An 83-Year-Old Banker Saw #shorts #wisdom #gettingolder](https://youtube.com/shorts/NZlySTe6g4o) |
+| 8.5 | 53,041 | The Question | [How Life Sounds When You're an Income Tax Inspector  #shorts  #motivation #sscsubinspector](https://youtube.com/shorts/Y-sVHDoZZZw) |
+| 8.3 | 33,530 | The Question | [How a Costco Becomes a Zombie-Proof Bunker](https://youtube.com/shorts/HdB8ZQmtCQ4) |
+| 7.0 | 23,715 | Unclassified | [Jay-Z and Beyoncé Face $536K Monthly Mortgage Payments #short #storytrending](https://youtube.com/shorts/wpDie7NIenE) |
+| 4.4 | 88,772 | Unclassified | [😢 She Stole Money to Save Her Blind Mother #shorts](https://youtube.com/shorts/DuvtKyOWXcM) |
 
-Top hashtags: #shorts #funny #viral #richvspoor #shortsfeed #ytshorts #viralshorts #usa #comedy #trevifountain #trending #sonic #relatable #youtubeshorts #minecraft
+Top hashtags: #shorts #costco #funny #relatable #viral #money #trending #finance #comedy #viralshorts #taxes #storytime #familydrama #cartoon #unitedkingdom
