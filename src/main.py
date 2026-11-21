@@ -98,7 +98,7 @@ def make_short(do_upload=False, publish_at=None, res=None, avoid=()):
     try:
         segs, wav, total = voice.synth_scenes(script["scenes"], work)
         for _ in range(2):
-            if total <= 52:
+            if total <= 55:
                 break
             words = sum(len(str(s.get("voice", "")).split()) for s in script["scenes"])
             script = script_gen.shorten(script, int(words * 48 / total))

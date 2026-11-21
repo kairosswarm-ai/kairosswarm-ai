@@ -125,7 +125,10 @@ Hook formulas (first line must use one; confirm the title, open a gap, prove a p
 Trending hashtags in this niche right now: {trend_tags}
 
 Structure: hook (first 3 s) -> setup -> the shocking number -> the twist/why -> the fix or takeaway -> cta.
-No channel intro. One idea. The cta is one short line (e.g. follow for one money fact a day).
+No channel intro. One idea. The LAST scene is type "cta" and must ask for all three, in ~15 spoken words:
+follow, like, and comment a money question that we will answer in a future video
+(e.g. "Follow and like for more. Got a money question? Comment it, and we'll answer it in a video.").
+Its line1/line2 on screen: e.g. "FOLLOW + LIKE" / "Comment your money question 👇".
 Narration ("voice") must sound natural spoken US English; write numbers as digits with $ and % (they are read aloud correctly).
 "caption" is the on-screen subtitle for that beat (can equal voice, max ~18 words).
 
