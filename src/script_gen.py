@@ -168,8 +168,11 @@ Only rewrite each scene's "voice" (and set "caption" to match). Keep the first l
 Scenes: {json.dumps(script['scenes'], indent=1)}
 Return JSON: {{"scenes": [...same scenes with shorter voice/caption...]}}"""
     out = chat([{"role": "user", "content": msg}], temperature=0.3, max_tokens=4000)
-    if out.get("scenes") and len(out["scenes"]) == len(script["scenes"]):
-        script["scenes"] = out["scenes"]
+    new = out.get("scenes") or []
+    if len(new) == len(script["scenes"]) and all(str(n.get("voice", "")).strip() for n in new):
+        for old, n in zip(script["scenes"], new):  # keep visuals, take only the new words
+            old["voice"] = str(n["voice"]).strip()
+            old["caption"] = str(n.get("caption") or n["voice"]).strip()
     return script
 
 

@@ -28,7 +28,12 @@ def synth_scenes(scenes, workdir, gap=0.15, lead=0.35, tail=0.6):
     segs, wavs, t = [], [], lead
     for i, s in enumerate(scenes):
         p = os.path.join(workdir, f"seg{i}.wav")
-        samples, sr = k.create(normalize(s.get("voice", "")), voice=VOICE, speed=SPEED, lang="en-us")
+        text = normalize(str(s.get("voice") or s.get("caption") or ""))
+        if text:
+            samples, sr = k.create(text, voice=VOICE, speed=SPEED, lang="en-us")
+        else:  # no words for this beat: hold the visual for 1.5 s
+            import numpy as np
+            sr = 24000; samples = np.zeros(int(1.5 * sr), dtype="float32")
         sf.write(p, samples, sr)
         d = len(samples) / sr
         segs.append((t, t + d)); wavs.append((p, t))

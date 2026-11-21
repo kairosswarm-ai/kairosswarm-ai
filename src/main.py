@@ -59,6 +59,7 @@ def make_short(do_upload=False):
     t0 = time.time()
     script = script_gen.generate(hist)
     work = tempfile.mkdtemp()
+    json.dump(script, open(os.path.join(OUT, "last_script.json"), "w"), indent=1)
     try:
         segs, wav, total = voice.synth_scenes(script["scenes"], work)
         for _ in range(2):
