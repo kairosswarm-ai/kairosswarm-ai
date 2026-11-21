@@ -1,23 +1,23 @@
-# Market research (2026-11-21 17:11 UTC)
+# Market research (2026-11-21 17:40 UTC)
 
-Searched: taxes, saving money, compound interest, costco, mortgage
+Searched: money tips, side hustle, credit card debt, roth ira, rich vs poor
 
 | x channel | views | formula | title |
 |---|---|---|---|
-| 567.5 | 567,544 | Unclassified | [Tree ring light: Christmas moms RUN to Costco 🎄](https://youtube.com/shorts/KFauiDHBqgQ) |
-| 66.4 | 485,617 | Unclassified | [You finally realize how taxes actually work 😅#POV #Comedy #Cartoon #Animation #shorts](https://youtube.com/shorts/w_tpjHF3GtU) |
-| 51.2 | 51,241 | The Mistake | [Omega Tried To Stop Costco Selling Watches Chea](https://youtube.com/shorts/pGIeWy74SOk) |
-| 41.4 | 146,401 | Unclassified | [Just a quick Costco run.](https://youtube.com/shorts/20soli-ZbZA) |
-| 25.3 | 25,254 | Unclassified | [Four friends dropped their coffee and filled a Costco cart with this 😱🎄](https://youtube.com/shorts/FJjPfRQMuOQ) |
-| 25.0 | 25,036 | Unclassified | [She froze at Costco when she saw this gift tower 😱🎁](https://youtube.com/shorts/wzIcU3NTSfE) |
-| 24.1 | 24,128 | Unclassified | [Her Friends Said Paying Off Her House Was a MISTAKE 😳🏡](https://youtube.com/shorts/GHUR0Euz8Rk) |
-| 19.0 | 31,578 | Unclassified | [LED helmet Harley dad found at Costco #shorts](https://youtube.com/shorts/aC87jWupZx8) |
-| 16.4 | 34,855 | Unclassified | [Scary Halloween Props in Costco New Zealand #halloween #trending #viral #shorts](https://youtube.com/shorts/HiqP3JQMGFU) |
-| 15.1 | 62,675 | The List | [5 Costco Skin Supplements Worth Knowing About #Shorts](https://youtube.com/shorts/Ilf4k0N8_P8) |
-| 9.7 | 255,586 | The List | [8 Mistakes An 83-Year-Old Banker Saw #shorts #wisdom #gettingolder](https://youtube.com/shorts/NZlySTe6g4o) |
-| 8.5 | 53,041 | The Question | [How Life Sounds When You're an Income Tax Inspector  #shorts  #motivation #sscsubinspector](https://youtube.com/shorts/Y-sVHDoZZZw) |
-| 8.3 | 33,530 | The Question | [How a Costco Becomes a Zombie-Proof Bunker](https://youtube.com/shorts/HdB8ZQmtCQ4) |
-| 7.0 | 23,715 | Unclassified | [Jay-Z and Beyoncé Face $536K Monthly Mortgage Payments #short #storytrending](https://youtube.com/shorts/wpDie7NIenE) |
-| 4.4 | 88,772 | Unclassified | [😢 She Stole Money to Save Her Blind Mother #shorts](https://youtube.com/shorts/DuvtKyOWXcM) |
+| 37.9 | 37,854 | Unclassified | [Jinko Dhanwan Banna Hai Vo Purse Rakhen 💯 / Spiritual Hum #shorts #moneytips #wealth](https://youtube.com/shorts/iAakyM7Rea0) |
+| 33.5 | 33,476 | The Statistic | ["There's $7 in there." He says he makes $120,000 / Financial Audit #shorts](https://youtube.com/shorts/UfWS3xAc59M) |
+| 33.0 | 32,963 | Unclassified | [Shinchan machli bech rha ha ❤️ #shorts #explore](https://youtube.com/shorts/nlYblLBtscY) |
+| 30.4 | 30,409 | Unclassified | [Credit Card debt explained in Minecraft!](https://youtube.com/shorts/tv0fQ7zFaQQ) |
+| 25.1 | 245,209 | Unclassified | [Money Counting Challenge #challenge #happiness #help #shorts #viral](https://youtube.com/shorts/aQqkCyLgT5E) |
+| 24.4 | 24,373 | The Question | [Why a Pricey Video Game Is Actually Cheap #animation #funny #gta6 #shorts  #moneytips](https://youtube.com/shorts/KStFL2D1eTQ) |
+| 12.2 | 30,514 | Unclassified | [One Income Isn't Enough. Build More Streams #shorts #viralvideo](https://youtube.com/shorts/RMJESxNuv0A) |
+| 8.6 | 22,049 | Unclassified | [agree ?💯 #money#success#moneytips#shorts#shortsfeed #cricket #cr7](https://youtube.com/shorts/1a75iC4ZpgI) |
+| 5.3 | 264,461 | Unclassified | [Jason Was Worried For Arky After He Revealed He Only Has $800 To His Name And Is In Debt😲](https://youtube.com/shorts/5s_6oY08H4I) |
+| 3.1 | 24,012 | The Statistic | [He's 20 And Mom Keeps 80% Of His PAY 💸  #finance #daveramsey](https://youtube.com/shorts/CXsmBcZ6bB0) |
+| 2.5 | 39,006 | The Question | [How to Find High-Paying Remote US Jobs From India in 2026 💼 #Shorts #Freelancing #SideHustle](https://youtube.com/shorts/wAQLUUnxH3c) |
+| 1.7 | 26,701 | The List | [4 Secret Websites ONLY Highly Ambitious People Know! 💸 #Shorts #MakeMoneyOnline #SideHustle](https://youtube.com/shorts/-GC3ZEo8A0Q) |
+| 0.7 | 7,471,803 | The Question | [Choose RICH or POOR parent ?](https://youtube.com/shorts/BK4P4-Ny_AQ) |
+| 0.1 | 72,329 | The Question | [How To Avoid Taxes Like A Millionaire #shorts #finance](https://youtube.com/shorts/aiAFCa_cm90) |
+| 0.1 | 125,444 | Unclassified | [India's Rich Rajkumari V/s Pakistan's Poor Rajkumari makeup challenge 😱//#shorts #funny #makeup](https://youtube.com/shorts/r-mXIywsk5s) |
 
-Top hashtags: #shorts #costco #funny #relatable #viral #money #trending #finance #comedy #viralshorts #taxes #storytime #familydrama #cartoon #unitedkingdom
+Top hashtags: #shorts #moneytips #funny #sidehustle #personalfinance #money #viral #help #viralshorts #gta6 #animation #shortsfeed #viralvideo #makemoneyonline #freelancing
