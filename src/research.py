@@ -16,7 +16,7 @@ QUERIES = [
     "credit card", "credit card debt", "personal finance", "money tips", "saving money",
     "car loan", "mortgage", "taxes", "401k", "roth ira", "compound interest", "budgeting",
     "how companies make money", "business facts", "rich vs poor", "side hustle", "inflation",
-    "insurance", "student loans", "costco", "billionaire",
+    "insurance", "student loans", "billionaire",
 ]
 
 
