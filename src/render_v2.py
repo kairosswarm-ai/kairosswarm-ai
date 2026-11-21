@@ -216,7 +216,13 @@ def overlay_number(d, ov, p, acc):
     lab = clean(ov.get("label", ""))
     if lab: ctext(d, 470, lab, FB, 56, WHITE, sw=7)
     size = int(210 * max(0.3, s))
-    ctext(d, 560, fmt(shown, ov.get("prefix", ""), ov.get("suffix", ""), ov.get("decimals", 0)), FB, size,
+    dec = ov.get("decimals")
+    if dec is None:
+        try:
+            fv = float(v); dec = 0 if fv.is_integer() else (1 if abs(fv) >= 1 or round(fv, 1) == fv else 2)
+        except Exception:
+            dec = 0
+    ctext(d, 560, fmt(shown, ov.get("prefix", ""), ov.get("suffix", ""), dec), FB, size,
           col(ov.get("color", "yellow"), "yellow"), sw=12)
     if ov.get("note"): ctext(d, 820, ov["note"], FS, 38, (230, 230, 230), sw=5)
 
@@ -312,7 +318,8 @@ def s_list_item(frame, d, s, p, t, imgs, acc):
     for ln in wrap(d, t_, f, W - 140)[:3]:
         ff = fit(d, ln, FB, 84, W - 140); stroke_text(d, ((W - text_w(d, ln, ff)) / 2, y), ln, ff, WHITE, 10); y += 98
     overlay = s.get("overlay")
-    if overlay: ctext(d, y + 20, fmt(overlay.get("value", 0), overlay.get("prefix", ""), overlay.get("suffix", "")),
+    if overlay: ctext(d, y + 20, fmt(overlay.get("value", 0), overlay.get("prefix", ""), overlay.get("suffix", ""),
+                                     overlay.get("decimals", 0 if float(overlay.get("value", 0) or 0).is_integer() else 1)),
                       FB, 120, col(overlay.get("color", "yellow"), "yellow"), sw=10)
 
 
