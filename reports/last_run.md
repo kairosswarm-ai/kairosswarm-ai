@@ -1,9 +1,13 @@
-# Last run (2026-11-21 14:07 UTC)
+# Last run (2026-11-21 14:12 UTC)
 
-## Setup check
-- secret `OPENROUTER_API_KEY`: OK
-- secret `YT_CLIENT_ID`: OK
-- secret `YT_CLIENT_SECRET`: OK
-- secret `YT_REFRESH_TOKEN`: OK
-- OpenRouter (anthropic/claude-sonnet-5.5): OK
-- YouTube auth: OK, channel **Compound Shock** (UCGUCJClqgxEoWc1xwqG4XUQ), subscribers 0
+## FAILED: narration too long for a Short (60.1s)
+```
+Traceback (most recent call last):
+  File "/home/runner/work/kairosswarm-ai/kairosswarm-ai/src/main.py", line 101, in main
+    lines = ["## Setup check"] + lines + ["", "## Short"] + make_short("--upload" in sys.argv)
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/kairosswarm-ai/kairosswarm-ai/src/main.py", line 65, in make_short
+    raise RuntimeError(f"narration too long for a Short ({total:.1f}s)")
+RuntimeError: narration too long for a Short (60.1s)
+
+```
