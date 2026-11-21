@@ -5,6 +5,10 @@ on:
     # schedules each one on YouTube for 9:00am, 2:00pm and 6:00pm US Eastern.
     - cron: "13 6 * * *"
   workflow_dispatch:
+    inputs:
+      slots:
+        description: "Optional ET publish times, e.g. 14:00,18:00 (default 09:00,14:00,18:00)"
+        default: ""
 
 permissions:
   contents: write
@@ -43,7 +47,10 @@ jobs:
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
           KOKORO_DIR: models
-        run: python -m src.main batch
+          SLOTS_IN: ${{ github.event.inputs.slots }}
+        run: |
+          [ -n "$SLOTS_IN" ] && export SLOTS_ET="$SLOTS_IN"
+          python -m src.main batch
       - name: Save video
         if: always()
         uses: actions/upload-artifact@v4
