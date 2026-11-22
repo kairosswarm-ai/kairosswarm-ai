@@ -267,6 +267,31 @@ Return JSON: {{"scenes": [...same scenes with shorter voice/caption...]}}"""
     return script
 
 
+def autofix_long_scenes(script, max_words=24):
+    """Split a too-long narration at a sentence break into two scenes with the same visual."""
+    out = []
+    for x in script.get("scenes") or []:
+        words = str(x.get("voice", "")).split()
+        if len(words) <= max_words or x.get("type") == "cta":
+            out.append(x); continue
+        sents = re.split(r"(?<=[.!?])\s+", str(x["voice"]).strip())
+        if len(sents) < 2:
+            out.append(x); continue
+        best, acc = 1, 0
+        half = len(words) / 2
+        for i, se in enumerate(sents[:-1]):
+            acc += len(se.split())
+            if acc >= half:
+                best = i + 1; break
+        a, b = " ".join(sents[:best]), " ".join(sents[best:])
+        first = dict(x); second = {k: v for k, v in x.items() if k not in ("overlay",)} if x.get("type") == "image" else dict(x)
+        first["voice"] = a; first["caption"] = " ".join(a.split()[:14])
+        second["voice"] = b; second["caption"] = " ".join(b.split()[:14])
+        out += [first, second]
+    script["scenes"] = out
+    return script
+
+
 def structure_problems(script, fmt):
     sc = script.get("scenes") or []
     pr = []
@@ -343,6 +368,7 @@ def generate(history, seed=None, max_topics=4, max_revisions=2, trends=None, tre
         for rev in range(max_revisions + 1):
             if not script.get("scenes"):
                 last_err = "empty script"; break
+            script = autofix_long_scenes(script)
             sp = structure_problems(script, fmt)
             if sp:
                 last_err = f"structure: {sp}"
