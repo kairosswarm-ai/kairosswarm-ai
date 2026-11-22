@@ -184,6 +184,17 @@ def make_short(do_upload=False, publish_at=None, res=None, avoid=(), lessons="")
 
 def main():
     cmd = sys.argv[1] if len(sys.argv) > 1 else "check"
+    if cmd == "delete":  # python -m src.main delete id1,id2  (only our own channel's videos)
+        ids = [i.strip() for i in (sys.argv[2] if len(sys.argv) > 2 else "").split(",") if i.strip()]
+        tok = youtube.access_token(); hist = load_hist(); lines = ["## Delete"]
+        for vid in ids:
+            code, txt = youtube.delete_video(tok, vid)
+            lines.append(f"- {vid}: {'deleted' if code == 204 else f'FAILED {code} {txt}'}")
+            for h in hist:
+                if h.get("id") == vid and code == 204:
+                    h["deleted"] = True
+        save_hist(hist); report(lines)
+        sys.exit(0 if all("deleted" in l for l in lines[1:]) else 1)
     if cmd == "batch":  # make len(SLOTS_ET) Shorts, each scheduled for its slot
         ok, lines = check()
         if not ok:

@@ -1,0 +1,38 @@
+name: maintenance
+on:
+  workflow_dispatch:
+    inputs:
+      delete_ids:
+        description: "Comma-separated video ids on our channel to delete"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: yt-pipeline
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: Delete videos
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          IDS: ${{ github.event.inputs.delete_ids }}
+        run: python -m src.main delete "$IDS"
+      - name: Commit report
+        if: always()
+        run: |
+          git config user.name "pipeline-bot"
+          git config user.email "pipeline-bot@users.noreply.github.com"
+          git add reports/ data/history.json || true
+          git diff --cached --quiet || (git commit -m "report: maintenance" && git pull --rebase -q && git push -q)

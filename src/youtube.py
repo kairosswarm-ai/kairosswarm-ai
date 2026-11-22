@@ -87,3 +87,9 @@ def set_captions(tok, video_id, srt_path, name="English"):
                                                        "Content-Type": f"multipart/related; boundary={boundary}"})
     r.raise_for_status()
     return r.json()["id"]
+
+
+def delete_video(tok, video_id):
+    r = requests.delete(f"{API}/videos", params={"id": video_id}, timeout=30,
+                        headers={"Authorization": f"Bearer {tok}"})
+    return r.status_code, r.text[:200]
