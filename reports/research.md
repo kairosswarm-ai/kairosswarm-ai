@@ -1,23 +1,21 @@
-# Market research (2026-11-22 09:23 UTC)
+# Market research (2026-11-22 09:43 UTC)
 
-Searched: 401k, insurance, business facts, inflation, saving money
+Searched: student loans, car loan, business facts, how companies make money, roth ira
 
 | x channel | views | formula | title |
 |---|---|---|---|
-| 77.7 | 77,675 | Unclassified | [Inflation hit Hogwarts Hard in the new HBO series💀 #shorts #harrypotter #memes](https://youtube.com/shorts/YoZ06ka5Xvw) |
-| 40.4 | 40,396 | Unclassified | [He crashed on purpose..until... #insurancescam #roadsafety #driving #shorts](https://youtube.com/shorts/Wa-E5LfE6qM) |
-| 28.8 | 555,955 | Unclassified | [Senior Citizen Saving Scheme 16 Lacs Investment Amount Calculation #money #investing](https://youtube.com/shorts/zZ8j6xmbNUw) |
-| 25.0 | 25,002 | The Question | [Why Can’t the Government Just Print More Money? 💸  #2danimation #animation](https://youtube.com/shorts/80Kgxns-1is) |
-| 21.9 | 164,494 | The Question | [When You Have Insurance but Still Pay#POV #Comedy #Cartoon #Animation #shorts](https://youtube.com/shorts/KZCAZp_WSEU) |
-| 21.9 | 21,869 | Unclassified | [Joe's insurance won't cover $12 medicine](https://youtube.com/shorts/I3zOeSL9L3I) |
-| 21.2 | 21,151 | Unclassified | [Every time the mayor prints money, my coins shrink.#shorts  #animation  #story  #money  #inflation](https://youtube.com/shorts/mlEWYM7HDmw) |
-| 20.5 | 20,454 | Unclassified | [Power Of Insurance 😱 #shorts #facts](https://youtube.com/shorts/eEC8d8f4FyU) |
-| 20.5 | 42,281 | Unclassified | [China's 1 Million Solar Panels Have a Shocking Problem 😳](https://youtube.com/shorts/Ri0EWKUMMzY) |
-| 13.3 | 64,610 | The Question | [How Ryanair Saves Money From a Staircase](https://youtube.com/shorts/FcwHN8QcWM0) |
-| 9.8 | 278,378 | Unclassified | [Amit save money 😆💞#theroameramit #rakhi #trending #shorts #shortsfeed](https://youtube.com/shorts/LArCzaV41J4) |
-| 9.8 | 259,072 | The List | [8 Mistakes An 83-Year-Old Banker Saw #shorts #wisdom #gettingolder](https://youtube.com/shorts/NZlySTe6g4o) |
-| 5.2 | 107,055 | Unclassified | [😢 She Stole Money to Save Her Blind Mother #shorts](https://youtube.com/shorts/DuvtKyOWXcM) |
-| 3.3 | 44,070 | Unclassified | [Insurance Denies Your Cancer Then Sponsors the Marathon #shorts](https://youtube.com/shorts/vyLeabnHaFc) |
-| 2.5 | 149,545 | The Question | [How Continental Was Founded✈️ #shorts #business](https://youtube.com/shorts/E_-WwmVRdsU) |
+| 234.1 | 234,105 | Unclassified | [BBQ or BB Live? He Was Just Trying to Make Money #shorts](https://youtube.com/shorts/hd2tCs8w8VA) |
+| 20.5 | 42,302 | Unclassified | [China's 1 Million Solar Panels Have a Shocking Problem 😳](https://youtube.com/shorts/Ri0EWKUMMzY) |
+| 2.5 | 149,652 | The Question | [How Continental Was Founded✈️ #shorts #business](https://youtube.com/shorts/E_-WwmVRdsU) |
+| 1.9 | 117,618 | The Question | [How Singapore Airlines Was Founded ✈ #shorts #business](https://youtube.com/shorts/B02NjFUabbg) |
+| 1.7 | 101,116 | The Question | [How Wise Was Founded 💵 #shorts #business](https://youtube.com/shorts/GNeRd2vyNKU) |
+| 1.5 | 107,925 | Unclassified | [The Biggest Brands in Russia 🇷🇺 #russia #brands #company #putin #shorts](https://youtube.com/shorts/0rNeMKrO9Y0) |
+| 1.1 | 66,221 | The Question | [How Hydro Flask Was Founded  💧 #shorts #business](https://youtube.com/shorts/RBvXWkXazFM) |
+| 1.1 | 63,684 | The Question | [How Delta Air Lines Was Founded ✈ #shorts #business](https://youtube.com/shorts/7ptl41Opcw8) |
+| 1.0 | 63,379 | The Question | [How Revolut Was Founded 💳 #shorts #business](https://youtube.com/shorts/tf3yxezF8W8) |
+| 0.8 | 45,588 | The Question | [How Carl's Jr. Was Founded 🍔 #shorts #business](https://youtube.com/shorts/UYADC17SzUc) |
+| 0.7 | 48,351 | Unclassified | [The YouTuber Who Helped Elon Musk #motivation #inspiration #mindset #billionaire #facts #shorts](https://youtube.com/shorts/8qzyiK6V-QQ) |
+| 0.4 | 136,564 | Unclassified | [Rich People Know This Money Secret! 😱](https://youtube.com/shorts/zAr0gs8kUMM) |
+| 0.2 | 91,833 | The Question | [How To Avoid Taxes Like A Millionaire #shorts #finance](https://youtube.com/shorts/aiAFCa_cm90) |
 
-Top hashtags: #shorts #facts #business #trending #money #shortsfeed #fyp #inflation #comedy #animation #ytshorts #funnyvideos #relatable #memes #youtubeshorts
+Top hashtags: #shorts #business #facts #shortsfeed #ytshorts #money #casestudy #motivation #ambani #car #wise #putin #russia #brands #company
