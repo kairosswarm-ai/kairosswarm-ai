@@ -103,6 +103,8 @@ def pick_format(hist):
 
 
 def scene_images(script, cache):
+    if os.environ.get("BG_MODE", "sober") == "sober":  # clean dark animated background, no photos
+        return {}, {"ai": 0, "fallback": 0, "cache": 0, "mode": "sober"}
     style = script.get("visual_style") or "cinematic photo, natural light, shallow depth of field"
     jobs = {}
     for i, sc in enumerate(script["scenes"]):
@@ -115,7 +117,7 @@ def scene_images(script, cache):
             if sc.get("image_prompt"): jobs[(i, "bg")] = sc["image_prompt"]
         else:
             jobs[(i, None)] = sc.get("image_prompt") or sc.get("caption") or sc.get("voice", "money")
-    out, stats = {}, {"ai": 0, "fallback": 0, "cache": 0}
+    out, stats = {}, {"ai": 0, "fallback": 0, "cache": 0}  # BG_MODE=photo
     with ThreadPoolExecutor(max_workers=6) as ex:
         futs = {k: ex.submit(imgmod.generate, pr, style, cache) for k, pr in jobs.items()}
         for (i, key), f in futs.items():

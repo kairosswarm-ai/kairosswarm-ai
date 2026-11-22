@@ -99,6 +99,23 @@ Use calculators for every computed number. 'facts' only for stable published fig
     return plan
 
 
+SOBER = os.environ.get("BG_MODE", "sober") == "sober"
+
+SCENE_DOC_SOBER = """Scene types (each scene = one beat, 3-7 seconds of narration). The background is a clean, dark,
+sober animated design (no photos), so every scene must carry strong on-screen TEXT or DATA:
+- {"type":"image","headline":"2-5 WORD title on screen",
+   "overlay":{"value":8100,"prefix":"$","suffix":"","label":"IN INTEREST","color":"red|green|yellow","note":"optional source"}}
+   (every 'image' scene MUST have a headline, an overlay, or both)
+- {"type":"bars","title":"WHERE IT GOES","items":[{"label":"Coffee","value":1460,"color":"yellow"},{"label":"Rent","value":21000,"color":"red"}],"prefix":"$","note":"optional"}
+- {"type":"timeline","label":"TIME IN DEBT","years":19,"start_year":2026}
+- {"type":"versus","title":"SAME $5,000","left":{"label":"MINIMUMS","color":"red","rows":[["Years","~19"],["Interest","$8,100"]]},
+   "right":{"label":"$200/MONTH","color":"green","rows":[["Years","~3"],["Interest","$1,750"]]}}
+- {"type":"receipt","title":"YOUR CAR LOAN","items":[["Car price","$35,000"],["Interest","$9,212"]],"total":["YOU PAY","$44,212"]}
+- {"type":"list_item","number":3,"headline":"short headline","overlay":{"value":1460,"prefix":"$"}}
+- {"type":"quiz","question":"...","options":["A","B","C"],"answer_index":1}
+- {"type":"cta","line1":"FOLLOW + LIKE","line2":"Comment your money question"}
+Use 'bars' or 'timeline' at least once when the numbers allow it."""
+
 SCENE_DOC = """Scene types (each scene = one beat, 3-7 seconds of narration). Every scene except cta has an
 "image_prompt": a vivid, specific, cinematic photo description that SHOWS the beat (real places, objects,
 everyday US life, money, cars, homes, stores, cards). NO text, numbers, logos, brands or famous people in it.
@@ -112,6 +129,14 @@ everyday US life, money, cars, homes, stores, cards). NO text, numbers, logos, b
 - {"type":"list_item","number":3,"headline":"short headline","image_prompt":"...","overlay":{"value":1460,"prefix":"$"}}
 - {"type":"quiz","question":"...","options":["A","B","C"],"answer_index":1,"image_prompt":"background..."}
 - {"type":"cta","line1":"FOLLOW + LIKE","line2":"Comment your money question"}"""
+
+VISUAL_RULES = """Also give "visual_style": one line describing a consistent CINEMATIC film look for all images of this video
+(film stock / colour grade, lighting, lens), e.g. "anamorphic 40mm, teal-and-orange grade, neon rim light, rain".
+It must be clearly different from these recent looks: {recent}
+Each image_prompt must read like a film shot: shot type (extreme close-up, wide establishing, low angle,
+over-the-shoulder, top-down, dutch angle), subject and action, setting, light. Vary the shot type every scene.
+Pick "motion" per scene from: zoom_in, zoom_out, pan_left, pan_right, pan_up, crash_zoom, drift."""
+
 
 FORMATS = {
     "story": "STORY: 5-7 'image' scenes that tell a tiny story with conflict (but... so...), 2-3 of them carry an overlay number; then cta.",
@@ -139,16 +164,10 @@ Facts you may use (always mention the source on screen in a note):
 Hook formulas (first line must use one; confirm the title, open a gap, prove a payoff exists):
 {FORMULAS}
 
-{SCENE_DOC}
+{SCENE_DOC_SOBER if SOBER else SCENE_DOC}
 
 FORMAT FOR THIS VIDEO (follow it exactly): {FORMATS.get(fmt, FORMATS['story'])}
-Also give "visual_style": one line describing a consistent CINEMATIC film look for all images of this video
-(film stock / colour grade, lighting, lens), e.g. "anamorphic 40mm, teal-and-orange grade, neon rim light, rain".
-It must be clearly different from these recent looks: {list(recent_styles)[-6:]}
-Each image_prompt must read like a film shot: shot type (extreme close-up, wide establishing, low angle,
-over-the-shoulder, top-down, dutch angle), subject and action, setting, light. Vary the shot type every scene.
-Pick "motion" per scene from: zoom_in, zoom_out, pan_left, pan_right, pan_up, crash_zoom, drift.
-
+{"" if SOBER else VISUAL_RULES.format(recent=list(recent_styles)[-6:])}
 Trending hashtags in this niche right now: {trend_tags}
 
 Length and pacing: 6-8 scenes, each scene 1-2 short sentences (max 24 words), so the picture changes every 4-6 seconds.
@@ -268,6 +287,10 @@ def structure_problems(script, fmt):
             tot = x.get("total") or ["", ""]
             if len(str(tot[0])) > 10 or len(str(tot[1] if len(tot) > 1 else "")) > 9:
                 pr.append("Receipt total must be short: label <= 10 chars, amount <= 9 chars.")
+    if SOBER:
+        for i, x in enumerate(sc):
+            if x.get("type") == "image" and not (x.get("headline") or x.get("overlay")):
+                pr.append(f"Scene {i + 1} is an 'image' scene with no headline or overlay; the background has no photo, so add one.")
     kinds = [x.get("type") for x in sc]
     need = {"versus": "versus", "receipt": "receipt", "top3": "list_item", "quiz": "quiz"}.get(fmt)
     if need and need not in kinds:

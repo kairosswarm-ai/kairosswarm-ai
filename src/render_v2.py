@@ -126,6 +126,32 @@ def prep(im, w=W, h=H, kind="film"):
     return grade(cover(im, int(w * 1.18), int(h * 1.18)), kind)
 
 
+SOBER_BG = (11, 14, 20); SOBER_GRID = (27, 33, 45)
+
+
+def sober_base(acc, seed=0):
+    """Large dark canvas with a fine grid and a faint growth curve; drifted a little every frame."""
+    PW, PH = W + 180, H + 180
+    im = Image.new("RGB", (PW, PH), SOBER_BG); d = ImageDraw.Draw(im)
+    for gx in range(0, PW, 90): d.line((gx, 0, gx, PH), fill=SOBER_GRID, width=2)
+    for gy in range(0, PH, 90): d.line((0, gy, PW, gy), fill=SOBER_GRID, width=2)
+    pts = [(PW * i / 100, PH * 0.96 - PH * 0.7 * ((math.exp(4 * i / 100) - 1) / (math.exp(4) - 1))) for i in range(101)]
+    faint = tuple(int(SOBER_BG[k] + (acc[k] - SOBER_BG[k]) * 0.10) for k in range(3))
+    d.line(pts, fill=faint, width=10)
+    glow = Image.new("L", (900, 900), 0); ImageDraw.Draw(glow).ellipse((150, 150, 750, 750), fill=70)
+    glow = glow.filter(ImageFilter.GaussianBlur(120))
+    return im, glow
+
+
+def sober_frame(base, glow, acc, tt):
+    PW, PH = base.size
+    ox = int(90 + 90 * math.sin(tt * 0.21)); oy = int(90 + 90 * math.cos(tt * 0.17))
+    fr = base.crop((ox, oy, ox + W, oy + H))
+    gx = int(W * 0.5 + W * 0.35 * math.sin(tt * 0.33)) - 450; gy = int(H * 0.38 + H * 0.12 * math.cos(tt * 0.27)) - 450
+    fr.paste(Image.new("RGB", (900, 900), acc), (gx, gy), glow)
+    return fr
+
+
 _GRAIN = []
 
 
@@ -261,6 +287,8 @@ def s_versus(frame, d, s, p, t, imgs, acc):
             m = Image.new("L", tile.size, 0); ImageDraw.Draw(m).rounded_rectangle((0, 0, tile.width - 1, 419), 36, fill=255)
             frame.paste(tile, (box[0], box[1]), m)
         c = col(side.get("color", "red" if i == 0 else "green"))
+        if im is None:
+            d.rounded_rectangle(box, 36, fill=(22, 27, 37))
         d.rounded_rectangle(box, 36, outline=c, width=8)
         lab = clean(side.get("label", "")).upper()
         stroke_text(d, (box[0] + 40, y0 + 26), lab, fit(d, lab, FB, 74, 880), c, 8)
@@ -361,7 +389,38 @@ def s_cta(frame, d, s, p, t, imgs, acc, logo=None):
     d.polygon([(cx - 60, ay), (cx + 60, ay), (cx, ay + 70)], fill=BRAND, outline=BLACK)
 
 
-PAINT = {"image": s_image, "versus": s_versus, "receipt": s_receipt, "list_item": s_list_item,
+def s_bars(frame, d, s, p, t, imgs, acc):
+    ctext(d, 260, s.get("title", ""), FB, 78, WHITE, sw=8)
+    items = (s.get("items") or [])[:5]
+    if not items: return
+    vals = [abs(float(i.get("value", 0) or 0)) for i in items]; mx = max(vals) or 1
+    base, maxh = 1080, 640; n = len(items)
+    bw = min(200, int((W - 220) / n) - 40); gap = (W - 160 - n * bw) / max(1, n)
+    for k, it in enumerate(items):
+        e = ease(p * 1.8 - k * 0.12)
+        h = maxh * vals[k] / mx * e; x = 80 + gap / 2 + k * (bw + gap)
+        d.rounded_rectangle((x, base - h, x + bw, base), 18, fill=col(it.get("color", "white")))
+        lab = clean(it.get("label", "")); lf = fit(d, lab, FS, 38, bw + gap - 10)
+        stroke_text(d, (x + bw / 2 - text_w(d, lab, lf) / 2, base + 16), lab, lf, WHITE, 5)
+        if e > 0.5:
+            vt = fmt(it.get("value", 0), s.get("prefix", ""), s.get("suffix", "")); vf = fit(d, vt, FB, 46, bw + gap - 10)
+            stroke_text(d, (x + bw / 2 - text_w(d, vt, vf) / 2, base - h - 62), vt, vf, WHITE, 6)
+    if s.get("note"): ctext(d, base + 76, s["note"], FM, 34, (170, 176, 186), sw=4)
+
+
+def s_timeline(frame, d, s, p, t, imgs, acc):
+    ctext(d, 300, s.get("label", ""), FB, 60, (200, 205, 214), sw=6)
+    yrs = float(s.get("years", 0) or 0); e = ease(p * 1.5)
+    ctext(d, 400, f"{yrs * e:.0f} YEARS", FB, 190, COLORS["red"], sw=12)
+    x0, x1, y = 120, 960, 740
+    d.rounded_rectangle((x0, y, x1, y + 50), 25, fill=(35, 40, 52))
+    d.rounded_rectangle((x0, y, x0 + max(50, (x1 - x0) * e), y + 50), 25, fill=COLORS["red"])
+    sy = int(s.get("start_year", 2026)); ey = str(sy + int(round(yrs)))
+    stroke_text(d, (x0, y + 70), str(sy), F(FS, 40), (200, 205, 214), 4)
+    stroke_text(d, (x1 - text_w(d, ey, F(FS, 40)), y + 70), ey, F(FS, 40), (200, 205, 214), 4)
+
+
+PAINT = {"bars": s_bars, "timeline": s_timeline, "image": s_image, "versus": s_versus, "receipt": s_receipt, "list_item": s_list_item,
          "quiz": s_quiz, "cta": s_cta}
 
 
@@ -410,6 +469,7 @@ def render(scenes, segs, audio_path, out_path, total, images, style_idx=0, logo_
                              "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", out_path],
                             stdin=subprocess.PIPE)
     nf = int(total * FPS); last_bg = None
+    sob = sober_base(acc) if not pre else None
     for fi in range(nf):
         tt = fi / FPS; k = 0
         for i, (a, b) in enumerate(segs):
@@ -419,11 +479,13 @@ def render(scenes, segs, audio_path, out_path, total, images, style_idx=0, logo_
         if k in pre:
             frame = kenburns(pre[k], p, s.get("motion") or motions[k % len(motions)])
             last_bg = frame
+        elif sob is not None:
+            frame = sober_frame(sob[0], sob[1], acc, tt)
         elif last_bg is not None:
             frame = last_bg.copy()
         else:
             frame = Image.new("RGB", (W, H), (16, 16, 22))
-        if s.get("type") in ("receipt", "quiz", "cta", "versus"):
+        if s.get("type") in ("receipt", "quiz", "cta", "versus") and k in pre:
             frame = frame.filter(ImageFilter.GaussianBlur(14)) if k in pre else frame
             frame = ImageEnhance.Brightness(frame).enhance(0.55)
         frame = darken(frame)
@@ -438,7 +500,7 @@ def render(scenes, segs, audio_path, out_path, total, images, style_idx=0, logo_
                 z = 1.0 + 0.07 * (1 - local / 0.2)
                 cw, ch = int(W / z), int(H / z)
                 frame = frame.crop(((W - cw) // 2, (H - ch) // 2, (W + cw) // 2, (H + ch) // 2)).resize((W, H), Image.BILINEAR)
-        frame = grain(frame, fi)
+        frame = grain(frame, fi, 0.05 if pre else 0.025)
         d = ImageDraw.Draw(frame)
         try:
             if s.get("type") == "cta":
