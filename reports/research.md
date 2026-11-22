@@ -1,23 +1,23 @@
-# Market research (2026-11-22 07:11 UTC)
+# Market research (2026-11-22 09:13 UTC)
 
-Searched: saving money, how companies make money, insurance, billionaire, credit card
+Searched: taxes, student loans, how companies make money, billionaire, money tips
 
 | x channel | views | formula | title |
 |---|---|---|---|
-| 228.4 | 228,393 | Unclassified | [BBQ or BB Live? He Was Just Trying to Make Money #shorts](https://youtube.com/shorts/hd2tCs8w8VA) |
-| 139.8 | 454,224 | Unclassified | [They Laughed After Kicking Their Mother Out… Until a Billionaire’s Limousine Stopped! 😱](https://youtube.com/shorts/WTMnWYrDr84) |
-| 86.1 | 129,210 | Unclassified | [A billionaire gets in your taxi! 🚕 #Shorts](https://youtube.com/shorts/kzOOTwl8AdU) |
-| 40.4 | 40,396 | Unclassified | [He crashed on purpose..until... #insurancescam #roadsafety #driving #shorts](https://youtube.com/shorts/Wa-E5LfE6qM) |
-| 32.7 | 32,655 | The Question | [Why Is She Swiping A Credit Card In The Water! #shorts](https://youtube.com/shorts/LVX4yC8FOYI) |
-| 29.5 | 29,498 | Unclassified | [The REAL Story Behind Credit Cards](https://youtube.com/shorts/73pCud95Ss4) |
-| 28.7 | 550,081 | Unclassified | [Senior Citizen Saving Scheme 16 Lacs Investment Amount Calculation #money #investing](https://youtube.com/shorts/zZ8j6xmbNUw) |
-| 28.3 | 28,288 | The Question | [Why Are People Using Credit Cards at the Trevi Fountain? 😳 #Shorts](https://youtube.com/shorts/MRtX1qccNBE) |
-| 22.5 | 22,508 | Unclassified | [Bam Margera Got His Credit Card Info Tattooed On Him So He Can Shop Online 😭💀 #shorts](https://youtube.com/shorts/m1wgrvrugFQ) |
-| 21.9 | 164,225 | The Question | [When You Have Insurance but Still Pay#POV #Comedy #Cartoon #Animation #shorts](https://youtube.com/shorts/KZCAZp_WSEU) |
-| 21.9 | 21,868 | Unclassified | [Joe's insurance won't cover $12 medicine](https://youtube.com/shorts/I3zOeSL9L3I) |
-| 20.5 | 20,454 | Unclassified | [Power Of Insurance 😱 #shorts #facts](https://youtube.com/shorts/eEC8d8f4FyU) |
-| 13.3 | 64,315 | The Question | [How Ryanair Saves Money From a Staircase](https://youtube.com/shorts/FcwHN8QcWM0) |
-| 11.6 | 511,974 | Unclassified | [SHE ABANDONED US… THEN A BILLIONAIRE SHOWED UP  #reels #roblox #robloxedit #berryave #story #shorts](https://youtube.com/shorts/hHTghPU-KQI) |
-| 9.8 | 258,789 | The List | [8 Mistakes An 83-Year-Old Banker Saw #shorts #wisdom #gettingolder](https://youtube.com/shorts/NZlySTe6g4o) |
+| 233.2 | 233,195 | Unclassified | [BBQ or BB Live? He Was Just Trying to Make Money #shorts](https://youtube.com/shorts/hd2tCs8w8VA) |
+| 139.8 | 454,313 | Unclassified | [They Laughed After Kicking Their Mother Out… Until a Billionaire’s Limousine Stopped! 😱](https://youtube.com/shorts/WTMnWYrDr84) |
+| 87.1 | 130,672 | Unclassified | [A billionaire gets in your taxi! 🚕 #Shorts](https://youtube.com/shorts/kzOOTwl8AdU) |
+| 66.5 | 499,392 | Unclassified | [You finally realize how taxes actually work 😅#POV #Comedy #Cartoon #Animation #shorts](https://youtube.com/shorts/w_tpjHF3GtU) |
+| 37.9 | 37,932 | Unclassified | [Jinko Dhanwan Banna Hai Vo Purse Rakhen 💯 / Spiritual Hum #shorts #moneytips #wealth](https://youtube.com/shorts/iAakyM7Rea0) |
+| 34.4 | 34,356 | The Statistic | ["There's $7 in there." He says he makes $120,000 / Financial Audit #shorts](https://youtube.com/shorts/UfWS3xAc59M) |
+| 25.5 | 250,073 | Unclassified | [Money Counting Challenge #challenge #happiness #help #shorts #viral](https://youtube.com/shorts/aQqkCyLgT5E) |
+| 24.4 | 24,383 | The Question | [Why a Pricey Video Game Is Actually Cheap #animation #funny #gta6 #shorts  #moneytips](https://youtube.com/shorts/KStFL2D1eTQ) |
+| 11.6 | 513,800 | Unclassified | [SHE ABANDONED US… THEN A BILLIONAIRE SHOWED UP  #reels #roblox #robloxedit #berryave #story #shorts](https://youtube.com/shorts/hHTghPU-KQI) |
+| 9.5 | 165,295 | Unclassified | [Bro, You Are NOT a Billionaire 💀 #shorts #usa](https://youtube.com/shorts/qLDZgnG6Lzo) |
+| 8.5 | 22,072 | Unclassified | [agree ?💯 #money#success#moneytips#shorts#shortsfeed #cricket #cr7](https://youtube.com/shorts/1a75iC4ZpgI) |
+| 8.3 | 315,845 | Unclassified | [She Poured a Drink on a Quiet Woman to Impress a Billionaire, Not Knowing She Was His Wife #shorts](https://youtube.com/shorts/Mwt38xP_pqk) |
+| 4.2 | 172,299 | The Statistic | [THE BILLIONAIRE OFFERED A WAITRESS $50,000 TO DANCE.. #shorts #shortvideo](https://youtube.com/shorts/s_kKnd_qoXY) |
+| 3.3 | 383,626 | Unclassified | [He Used One Lie to Become a Billionaire😨 #shorts #viral](https://youtube.com/shorts/iqpWyU89Mjk) |
+| 3.0 | 311,697 | Unclassified | [She really said higher taxes 💀 #shorts](https://youtube.com/shorts/lv4lIo4sxHg) |
 
-Top hashtags: #shorts #trending #shortsfeed #comedy #funny #viral #viralshorts #fyp #humor #comedyshorts #jokes #reels #laugh #travel #relatable
+Top hashtags: #shorts #moneytips #viralshorts #viral #funny #usa #taxes #personalfinance #money #instantkarma #karma #storytime #wealth #roblox #emotionalstory
