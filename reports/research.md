@@ -1,23 +1,23 @@
-# Market research (2026-11-21 18:26 UTC)
+# Market research (2026-11-22 07:11 UTC)
 
-Searched: money tips, credit card, mortgage, budgeting, car loan
+Searched: saving money, how companies make money, insurance, billionaire, credit card
 
 | x channel | views | formula | title |
 |---|---|---|---|
-| 37.9 | 37,873 | Unclassified | [Jinko Dhanwan Banna Hai Vo Purse Rakhen 💯 / Spiritual Hum #shorts #moneytips #wealth](https://youtube.com/shorts/iAakyM7Rea0) |
-| 33.8 | 33,779 | The Comparison | [Subscriptions vs Cancelling them #shorts](https://youtube.com/shorts/zdjFjQ2Vc70) |
-| 33.5 | 33,476 | The Statistic | ["There's $7 in there." He says he makes $120,000 / Financial Audit #shorts](https://youtube.com/shorts/UfWS3xAc59M) |
-| 32.7 | 32,653 | The Question | [Why Is She Swiping A Credit Card In The Water! #shorts](https://youtube.com/shorts/LVX4yC8FOYI) |
-| 29.5 | 29,489 | Unclassified | [The REAL Story Behind Credit Cards](https://youtube.com/shorts/73pCud95Ss4) |
-| 29.0 | 28,967 | The Question | [Why are People Swiping Credit Cards in a Fountain?💳😯](https://youtube.com/shorts/cPOe6HNPGnE) |
-| 28.3 | 28,267 | The Question | [Why Are People Using Credit Cards at the Trevi Fountain? 😳 #Shorts](https://youtube.com/shorts/MRtX1qccNBE) |
-| 25.3 | 25,320 | Unclassified | [Ramayana Budget Scam Exposed🤫!](https://youtube.com/shorts/kFJHKbBwgS0) |
-| 25.2 | 246,547 | Unclassified | [Money Counting Challenge #challenge #happiness #help #shorts #viral](https://youtube.com/shorts/aQqkCyLgT5E) |
-| 24.4 | 24,376 | The Question | [Why a Pricey Video Game Is Actually Cheap #animation #funny #gta6 #shorts  #moneytips](https://youtube.com/shorts/KStFL2D1eTQ) |
-| 24.1 | 24,128 | Unclassified | [Her Friends Said Paying Off Her House Was a MISTAKE 😳🏡](https://youtube.com/shorts/GHUR0Euz8Rk) |
-| 23.9 | 23,905 | Unclassified | [Bam Margera Got His Credit Card Info Tattooed On Him So He Can Shop Online 😭💀 #shorts](https://youtube.com/shorts/m1wgrvrugFQ) |
-| 21.6 | 40,877 | Unclassified | [RAMAYANA part 1 BUDGET is NOT ₹2,000 CRORE? 😳 #shorts #ramayana](https://youtube.com/shorts/M-ygC2ZZ_lQ) |
-| 17.6 | 584,722 | Unclassified | [Someone Stole His Credit Card 😱 / The Rookie #movie #usa #shorts #tvshow](https://youtube.com/shorts/L0T8hjLG_IY) |
-| 8.6 | 22,060 | Unclassified | [agree ?💯 #money#success#moneytips#shorts#shortsfeed #cricket #cr7](https://youtube.com/shorts/1a75iC4ZpgI) |
+| 228.4 | 228,393 | Unclassified | [BBQ or BB Live? He Was Just Trying to Make Money #shorts](https://youtube.com/shorts/hd2tCs8w8VA) |
+| 139.8 | 454,224 | Unclassified | [They Laughed After Kicking Their Mother Out… Until a Billionaire’s Limousine Stopped! 😱](https://youtube.com/shorts/WTMnWYrDr84) |
+| 86.1 | 129,210 | Unclassified | [A billionaire gets in your taxi! 🚕 #Shorts](https://youtube.com/shorts/kzOOTwl8AdU) |
+| 40.4 | 40,396 | Unclassified | [He crashed on purpose..until... #insurancescam #roadsafety #driving #shorts](https://youtube.com/shorts/Wa-E5LfE6qM) |
+| 32.7 | 32,655 | The Question | [Why Is She Swiping A Credit Card In The Water! #shorts](https://youtube.com/shorts/LVX4yC8FOYI) |
+| 29.5 | 29,498 | Unclassified | [The REAL Story Behind Credit Cards](https://youtube.com/shorts/73pCud95Ss4) |
+| 28.7 | 550,081 | Unclassified | [Senior Citizen Saving Scheme 16 Lacs Investment Amount Calculation #money #investing](https://youtube.com/shorts/zZ8j6xmbNUw) |
+| 28.3 | 28,288 | The Question | [Why Are People Using Credit Cards at the Trevi Fountain? 😳 #Shorts](https://youtube.com/shorts/MRtX1qccNBE) |
+| 22.5 | 22,508 | Unclassified | [Bam Margera Got His Credit Card Info Tattooed On Him So He Can Shop Online 😭💀 #shorts](https://youtube.com/shorts/m1wgrvrugFQ) |
+| 21.9 | 164,225 | The Question | [When You Have Insurance but Still Pay#POV #Comedy #Cartoon #Animation #shorts](https://youtube.com/shorts/KZCAZp_WSEU) |
+| 21.9 | 21,868 | Unclassified | [Joe's insurance won't cover $12 medicine](https://youtube.com/shorts/I3zOeSL9L3I) |
+| 20.5 | 20,454 | Unclassified | [Power Of Insurance 😱 #shorts #facts](https://youtube.com/shorts/eEC8d8f4FyU) |
+| 13.3 | 64,315 | The Question | [How Ryanair Saves Money From a Staircase](https://youtube.com/shorts/FcwHN8QcWM0) |
+| 11.6 | 511,974 | Unclassified | [SHE ABANDONED US… THEN A BILLIONAIRE SHOWED UP  #reels #roblox #robloxedit #berryave #story #shorts](https://youtube.com/shorts/hHTghPU-KQI) |
+| 9.8 | 258,789 | The List | [8 Mistakes An 83-Year-Old Banker Saw #shorts #wisdom #gettingolder](https://youtube.com/shorts/NZlySTe6g4o) |
 
-Top hashtags: #shorts #moneytips #funny #viral #personalfinance #shortsfeed #help #ytshorts #kindness #gta6 #usa #relatable #trevifountain #short #jayz
+Top hashtags: #shorts #trending #shortsfeed #comedy #funny #viral #viralshorts #fyp #humor #comedyshorts #jokes #reels #laugh #travel #relatable
