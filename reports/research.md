@@ -1,23 +1,23 @@
-# Market research (2026-11-22 09:13 UTC)
+# Market research (2026-11-22 09:23 UTC)
 
-Searched: taxes, student loans, how companies make money, billionaire, money tips
+Searched: 401k, insurance, business facts, inflation, saving money
 
 | x channel | views | formula | title |
 |---|---|---|---|
-| 233.2 | 233,195 | Unclassified | [BBQ or BB Live? He Was Just Trying to Make Money #shorts](https://youtube.com/shorts/hd2tCs8w8VA) |
-| 139.8 | 454,313 | Unclassified | [They Laughed After Kicking Their Mother Out… Until a Billionaire’s Limousine Stopped! 😱](https://youtube.com/shorts/WTMnWYrDr84) |
-| 87.1 | 130,672 | Unclassified | [A billionaire gets in your taxi! 🚕 #Shorts](https://youtube.com/shorts/kzOOTwl8AdU) |
-| 66.5 | 499,392 | Unclassified | [You finally realize how taxes actually work 😅#POV #Comedy #Cartoon #Animation #shorts](https://youtube.com/shorts/w_tpjHF3GtU) |
-| 37.9 | 37,932 | Unclassified | [Jinko Dhanwan Banna Hai Vo Purse Rakhen 💯 / Spiritual Hum #shorts #moneytips #wealth](https://youtube.com/shorts/iAakyM7Rea0) |
-| 34.4 | 34,356 | The Statistic | ["There's $7 in there." He says he makes $120,000 / Financial Audit #shorts](https://youtube.com/shorts/UfWS3xAc59M) |
-| 25.5 | 250,073 | Unclassified | [Money Counting Challenge #challenge #happiness #help #shorts #viral](https://youtube.com/shorts/aQqkCyLgT5E) |
-| 24.4 | 24,383 | The Question | [Why a Pricey Video Game Is Actually Cheap #animation #funny #gta6 #shorts  #moneytips](https://youtube.com/shorts/KStFL2D1eTQ) |
-| 11.6 | 513,800 | Unclassified | [SHE ABANDONED US… THEN A BILLIONAIRE SHOWED UP  #reels #roblox #robloxedit #berryave #story #shorts](https://youtube.com/shorts/hHTghPU-KQI) |
-| 9.5 | 165,295 | Unclassified | [Bro, You Are NOT a Billionaire 💀 #shorts #usa](https://youtube.com/shorts/qLDZgnG6Lzo) |
-| 8.5 | 22,072 | Unclassified | [agree ?💯 #money#success#moneytips#shorts#shortsfeed #cricket #cr7](https://youtube.com/shorts/1a75iC4ZpgI) |
-| 8.3 | 315,845 | Unclassified | [She Poured a Drink on a Quiet Woman to Impress a Billionaire, Not Knowing She Was His Wife #shorts](https://youtube.com/shorts/Mwt38xP_pqk) |
-| 4.2 | 172,299 | The Statistic | [THE BILLIONAIRE OFFERED A WAITRESS $50,000 TO DANCE.. #shorts #shortvideo](https://youtube.com/shorts/s_kKnd_qoXY) |
-| 3.3 | 383,626 | Unclassified | [He Used One Lie to Become a Billionaire😨 #shorts #viral](https://youtube.com/shorts/iqpWyU89Mjk) |
-| 3.0 | 311,697 | Unclassified | [She really said higher taxes 💀 #shorts](https://youtube.com/shorts/lv4lIo4sxHg) |
+| 77.7 | 77,675 | Unclassified | [Inflation hit Hogwarts Hard in the new HBO series💀 #shorts #harrypotter #memes](https://youtube.com/shorts/YoZ06ka5Xvw) |
+| 40.4 | 40,396 | Unclassified | [He crashed on purpose..until... #insurancescam #roadsafety #driving #shorts](https://youtube.com/shorts/Wa-E5LfE6qM) |
+| 28.8 | 555,955 | Unclassified | [Senior Citizen Saving Scheme 16 Lacs Investment Amount Calculation #money #investing](https://youtube.com/shorts/zZ8j6xmbNUw) |
+| 25.0 | 25,002 | The Question | [Why Can’t the Government Just Print More Money? 💸  #2danimation #animation](https://youtube.com/shorts/80Kgxns-1is) |
+| 21.9 | 164,494 | The Question | [When You Have Insurance but Still Pay#POV #Comedy #Cartoon #Animation #shorts](https://youtube.com/shorts/KZCAZp_WSEU) |
+| 21.9 | 21,869 | Unclassified | [Joe's insurance won't cover $12 medicine](https://youtube.com/shorts/I3zOeSL9L3I) |
+| 21.2 | 21,151 | Unclassified | [Every time the mayor prints money, my coins shrink.#shorts  #animation  #story  #money  #inflation](https://youtube.com/shorts/mlEWYM7HDmw) |
+| 20.5 | 20,454 | Unclassified | [Power Of Insurance 😱 #shorts #facts](https://youtube.com/shorts/eEC8d8f4FyU) |
+| 20.5 | 42,281 | Unclassified | [China's 1 Million Solar Panels Have a Shocking Problem 😳](https://youtube.com/shorts/Ri0EWKUMMzY) |
+| 13.3 | 64,610 | The Question | [How Ryanair Saves Money From a Staircase](https://youtube.com/shorts/FcwHN8QcWM0) |
+| 9.8 | 278,378 | Unclassified | [Amit save money 😆💞#theroameramit #rakhi #trending #shorts #shortsfeed](https://youtube.com/shorts/LArCzaV41J4) |
+| 9.8 | 259,072 | The List | [8 Mistakes An 83-Year-Old Banker Saw #shorts #wisdom #gettingolder](https://youtube.com/shorts/NZlySTe6g4o) |
+| 5.2 | 107,055 | Unclassified | [😢 She Stole Money to Save Her Blind Mother #shorts](https://youtube.com/shorts/DuvtKyOWXcM) |
+| 3.3 | 44,070 | Unclassified | [Insurance Denies Your Cancer Then Sponsors the Marathon #shorts](https://youtube.com/shorts/vyLeabnHaFc) |
+| 2.5 | 149,545 | The Question | [How Continental Was Founded✈️ #shorts #business](https://youtube.com/shorts/E_-WwmVRdsU) |
 
-Top hashtags: #shorts #moneytips #viralshorts #viral #funny #usa #taxes #personalfinance #money #instantkarma #karma #storytime #wealth #roblox #emotionalstory
+Top hashtags: #shorts #facts #business #trending #money #shortsfeed #fyp #inflation #comedy #animation #ytshorts #funnyvideos #relatable #memes #youtubeshorts
