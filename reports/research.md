@@ -1,21 +1,23 @@
-# Market research (2026-11-22 09:43 UTC)
+# Market research (2026-11-23 07:37 UTC)
 
-Searched: student loans, car loan, business facts, how companies make money, roth ira
+Searched: rich vs poor, personal finance, inflation, business facts, budgeting
 
 | x channel | views | formula | title |
 |---|---|---|---|
-| 234.1 | 234,105 | Unclassified | [BBQ or BB Live? He Was Just Trying to Make Money #shorts](https://youtube.com/shorts/hd2tCs8w8VA) |
-| 20.5 | 42,302 | Unclassified | [China's 1 Million Solar Panels Have a Shocking Problem 😳](https://youtube.com/shorts/Ri0EWKUMMzY) |
-| 2.5 | 149,652 | The Question | [How Continental Was Founded✈️ #shorts #business](https://youtube.com/shorts/E_-WwmVRdsU) |
-| 1.9 | 117,618 | The Question | [How Singapore Airlines Was Founded ✈ #shorts #business](https://youtube.com/shorts/B02NjFUabbg) |
-| 1.7 | 101,116 | The Question | [How Wise Was Founded 💵 #shorts #business](https://youtube.com/shorts/GNeRd2vyNKU) |
-| 1.5 | 107,925 | Unclassified | [The Biggest Brands in Russia 🇷🇺 #russia #brands #company #putin #shorts](https://youtube.com/shorts/0rNeMKrO9Y0) |
-| 1.1 | 66,221 | The Question | [How Hydro Flask Was Founded  💧 #shorts #business](https://youtube.com/shorts/RBvXWkXazFM) |
-| 1.1 | 63,684 | The Question | [How Delta Air Lines Was Founded ✈ #shorts #business](https://youtube.com/shorts/7ptl41Opcw8) |
-| 1.0 | 63,379 | The Question | [How Revolut Was Founded 💳 #shorts #business](https://youtube.com/shorts/tf3yxezF8W8) |
-| 0.8 | 45,588 | The Question | [How Carl's Jr. Was Founded 🍔 #shorts #business](https://youtube.com/shorts/UYADC17SzUc) |
-| 0.7 | 48,351 | Unclassified | [The YouTuber Who Helped Elon Musk #motivation #inspiration #mindset #billionaire #facts #shorts](https://youtube.com/shorts/8qzyiK6V-QQ) |
-| 0.4 | 136,564 | Unclassified | [Rich People Know This Money Secret! 😱](https://youtube.com/shorts/zAr0gs8kUMM) |
-| 0.2 | 91,833 | The Question | [How To Avoid Taxes Like A Millionaire #shorts #finance](https://youtube.com/shorts/aiAFCa_cm90) |
+| 233.5 | 233,471 | The Impossible Claim | [Never Judge a Man by His Clothes! #kindness](https://youtube.com/shorts/Jes64g8hiJU) |
+| 174.9 | 255,310 | Unclassified | [Rich or poor #shorts #funny #comedy #memes #relatable #Easy-boy-l8g](https://youtube.com/shorts/StENw0ZXKNs) |
+| 35.3 | 35,290 | The Statistic | ["There's $7 in there." He says he makes $120,000 / Financial Audit #shorts](https://youtube.com/shorts/UfWS3xAc59M) |
+| 33.8 | 33,770 | The Comparison | [Subscriptions vs Cancelling them #shorts](https://youtube.com/shorts/zdjFjQ2Vc70) |
+| 33.8 | 33,834 | The Question | [Can you guess what $20 an hour in 2019 is worth today?](https://youtube.com/shorts/gQ_mT3UFqUc) |
+| 25.1 | 27,329 | The Statistic | [😱 ₹30,592 EXTRA on ₹10 Lakh FD! Post Office Beats Bank of Baroda! 💰 #shorts #trendingshorts](https://youtube.com/shorts/kA419RU2kzc) |
+| 21.9 | 41,608 | Unclassified | [RAMAYANA part 1 BUDGET is NOT ₹2,000 CRORE? 😳 #shorts #ramayana](https://youtube.com/shorts/M-ygC2ZZ_lQ) |
+| 21.1 | 21,146 | Unclassified | [Every time the mayor prints money, my coins shrink.#shorts  #animation  #story  #money  #inflation](https://youtube.com/shorts/mlEWYM7HDmw) |
+| 20.7 | 117,755 | The Comparison | [Renting vs Buying at 23: Who's Richer at 40? 💰](https://youtube.com/shorts/lC7S0KmrgfE) |
+| 16.0 | 29,500 | The Impossible Claim | [You make money   You never make more time](https://youtube.com/shorts/PSilPUDiTUI) |
+| 10.0 | 27,112 | The Comparison | [Poor vs Rich: How They Spend Their Weekends 🤯💰 #Shorts](https://youtube.com/shorts/CVvwN3R1iw4) |
+| 4.9 | 23,448 | Unclassified | [Kid Demands Refund From Tooth Fairy Over Inflation 🦷😂 #funny #shorts #kidsaidit](https://youtube.com/shorts/XP0hOHXYz4g) |
+| 3.7 | 41,497 | Unclassified | [LEGO Took a Child to Court! 😱 #shorts #facts](https://youtube.com/shorts/B0P7esCxkkA) |
+| 3.0 | 69,692 | The Comparison | [Lawyers vs. Budget 💯 #shorts](https://youtube.com/shorts/lBqflmUtxUQ) |
+| 2.9 | 92,667 | The Statistic | [Never Buy a New Car (The $33,000 Math) #shorts #mindset](https://youtube.com/shorts/YmxAT9dNMiU) |
 
-Top hashtags: #shorts #business #facts #shortsfeed #ytshorts #money #casestudy #motivation #ambani #car #wise #putin #russia #brands #company
+Top hashtags: #shorts #personalfinance #business #facts #money #mindset #motivation #inflation #youtubeshorts #funny #finance #financialliteracy #animation #financialfreedom #moneymindset
