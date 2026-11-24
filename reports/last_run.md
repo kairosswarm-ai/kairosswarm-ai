@@ -1,4 +1,4 @@
-# Last run (2026-11-23 07:54 UTC)
+# Last run (2026-11-24 07:44 UTC)
 
 ## Setup check
 - secret `OPENROUTER_API_KEY`: OK
@@ -15,33 +15,37 @@
     "errors": [
   )
 
-## Own channel: 6 past Shorts checked, best so far 21 views
+## Own channel: 9 past Shorts checked, best so far 24 views
 
 ## Market research: OK, 20 trending Shorts analysed (see reports/research.md)
 
-## Short 1 (slot 09:00 ET = 2026-11-23T14:00:00Z)
-- topic: The $5 coffee that costs $40: a hypothetical $35 overdraft fee on a $5 debit purchase, expressed as an interest rate. The fee is 700% of the purchase, and if the account stays overdrawn for just one day, the annualized rate is over 255,000%. Compare that with the interest a 24% APR credit card would charge on the same $5 for a month (about 10 cents). Fix today: open your bank app, check whether you opted in to overdraft coverage for debit card and ATM transactions, switch it off if you did, and set a low-balance alert. (money)
-- inspired by trend: The Comparison pattern (Subscriptions vs Cancelling 33.8x, Renting vs Buying 20.7x), combined with The Statistic hook ('$7 in there' 35.3x): a shocking single number in a side-by-side of two ways to borrow $5.
-- title: The $5 Coffee That Costs $40 ☕😳 #shorts #ytshorts #viral (title score 100, hook score 54)
-- format: receipt, look #11, images: {'ai': 0, 'fallback': 0, 'cache': 0, 'mode': 'sober'}
-- length: 45.7s, built in 203s
+## Short 1 (slot 09:00 ET = 2026-11-24T14:00:00Z)
+- topic: You have car insurance, but the $2,000 deductible still hits you first. Put on a 24% APR credit card and paid off at $100 a month, that $2,000 costs far more than $2,000. The fix is to see your deductible today and start a deductible fund. (money)
+- inspired by trend: The Question hook pattern plus the 'You have insurance but still pay' theme (21.0x and 53.3x). It also reuses the quiz/versus format, which is our best performer: 'Why does a $2,000 deductible cost $___?'
+- title: A $2,000 Deductible Can Cost $2,580 🚗💸 #shorts #ytshorts #viral (title score 100, hook score 74)
+- format: versus, look #2, images: {'ai': 0, 'fallback': 0, 'cache': 0, 'mode': 'sober'}
+- length: 53.6s, built in 282s
 - fact check: (revisions 1) passed
-- uploaded: https://youtube.com/shorts/am2iBYfFkyk (privacy now: private, goes live 2026-11-23T14:00:00Z UTC)
+- uploaded: https://youtube.com/shorts/koG8W83XHDU (privacy now: private, goes live 2026-11-24T14:00:00Z UTC)
 
-## Short 2 (slot 14:00 ET = 2026-11-23T19:00:00Z)
-- topic: The phone upgrade cycle: a hypothetical $1,000 phone replaced every 2 years vs. every 4 years, and what the $500-a-year gap becomes if it is invested instead (money)
-- inspired by trend: The Comparison pattern ('Subscriptions vs Cancelling them' at 33.8x, 'Renting vs Buying at 23: Who's Richer at 40?' at 20.7x). Two side-by-side paths with the same starting point, the viewer's own phone in their pocket, and a final number that pays off the hook.
-- title: The $20.83 a Month Phone Gap 📱😳 #shorts #ytshorts #viral (title score 100, hook score 57)
-- format: quiz, look #11, images: {'ai': 0, 'fallback': 0, 'cache': 0, 'mode': 'sober'}
-- length: 45.9s, built in 297s
+## Short 2 (slot 14:00 ET = 2026-11-24T19:00:00Z)
+- topic: Shrinkflation: the price tag stays at $4.00, but the box shrinks from 16 oz to 14 oz. Show the real price per ounce, then the yearly cost across a packaged-food cart, with the fix of reading the unit price on the shelf tag today. (business)
+- inspired by trend: The Question hook pattern (the 'Why are people swiping credit cards in a fountain?' Shorts) combined with 'when you pay the same but still lose' (the 'You have insurance but still pay' pattern). Hook idea: 'Why does your $4 cereal feel lighter? The price didn't change. The box did.' Business pillar: pricing tricks.
+- title: The 14% Per-Ounce Hike Hiding at $4.00 📦😳 #shorts #ytshorts #viral (title score 100, hook score 57)
+- format: top3, look #9, images: {'ai': 0, 'fallback': 0, 'cache': 0, 'mode': 'sober'}
+- length: 52.9s, built in 479s
 - fact check: (revisions 2) passed
-- uploaded: https://youtube.com/shorts/aadQq7VdB10 (privacy now: private, goes live 2026-11-23T19:00:00Z UTC)
+- uploaded: https://youtube.com/shorts/PpXTo4L_hLE (privacy now: private, goes live 2026-11-24T19:00:00Z UTC)
 
-## Short 3 (slot 18:00 ET = 2026-11-23T23:00:00Z)
-- topic: The hidden 7.65% your boss pays on top of your salary: a $60,000 job really costs the company at least $64,590, and the same payroll taxes show up on your pay stub (business)
-- inspired by trend: The Statistic pattern ('There's $7 in there. He says he makes $120,000') and The Question/Impossible Claim patterns ('Can you guess what $20 an hour is worth today?'). It is a business-math reveal built on one shocking number the viewer can check on their own pay stub. The visual is a salary bar with the hidden employer layer stacking on top, the same clean two-bar comparison that worked on our own channel ($75/month versus cancelling, 24% versus 7% doubling).
-- title: Your $60,000 Job Costs $64,590 💸😳 #shorts #ytshorts #viral (title score 100, hook score 63)
-- format: story, look #5, images: {'ai': 0, 'fallback': 0, 'cache': 0, 'mode': 'sober'}
-- length: 54.5s, built in 528s
-- fact check: (revisions 1) passed
-- uploaded: https://youtube.com/shorts/gfVbwfg8bqI (privacy now: private, goes live 2026-11-23T23:00:00Z UTC)
+## Short 3 (slot 18:00 ET = 2026-11-24T23:00:00Z)
+- FAILED: could not produce a verified script: fact check failed: ['Title "Stop Renting Your Modem: $1,800 Lost" is misleading. The $1,800 is the gross rent. Net of a $120 modem, the loss is $1,680, so "lost" overstates it.', 'Titles "Buy a $120 Modem, Save $1,680", "Your Modem Pays Off in 8 Months" and "A $120 Modem vs $1,800 in Rent" state the hypothetical $120 price as fact. The video itself says "Say a modem costs $120." The $1,680 saving also assumes the modem lasts 10 years, and the titles omit both caveats.', 'Scene 6 overlay shows "3 STEPS", which is not a calculator result. It also contradicts the voiceover, which lists four actions (check the approved list, buy, return the rental, confirm the fee is gone), while the label lists only three.', 'Scene 5 voiceover says "you pay $1,680 more than buying your own" without saying it assumes a hypothetical $120 modem that lasts 10 years. That caveat appears only in the small on-screen note, so the spoken claim reads as a general fact.']
+```
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/kairosswarm-ai/kairosswarm-ai/src/main.py", line 136, in make_short
+    script = script_gen.generate(hist, trends=research.summary_for_prompt(res) if res else None,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/kairosswarm-ai/kairosswarm-ai/src/script_gen.py", line 399, in generate
+    raise RuntimeError(f"could not produce a verified script: {last_err}")
+RuntimeError: could not produce a verified script: fact check failed: ['Title "Stop Renting Your Modem: $1,800 Lost" is misleading. The $1,800 is the gross rent. Net of a $120 modem, the loss is $1,680, so "lost" overstates it.', 'Titles "Buy a $120 Modem, Save $1,680", "Your Modem Pays Off in 8 Months" and "A $120 Modem vs $1,800 in Rent" state the hypothetical $120 price as fact. The video itself says "Say a modem costs $120." The $1,680 saving also assumes the modem lasts 10 years, and the titles omit both caveats.', 'Scene 6 overlay shows "3 STEPS", which is not a calculator result. It also contradicts the voiceover, which lists four actions (check the approved list, buy, return the rental, confirm the fee is gone), while the label lists only three.', 'Scene 5 voiceover says "you pay $1,680 more than buying your own" without saying it assumes a hypothetical $120 modem that lasts 10 years. That caveat appears only in the small on-screen note, so the spoken claim reads as a general fact.']
+
+```
